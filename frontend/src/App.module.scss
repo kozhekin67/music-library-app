@@ -1,0 +1,17 @@
+.app {
+  background: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 40%) 0%,
+      rgb(0 0 0 / 0%) 39.9%
+    ),
+    linear-gradient(0deg, rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)),
+    url('~/public/images/abstract-design-purple-flowing-lines.jpg') no-repeat
+      center center;
+  background-size: cover;
+  width: 100vw; /* Ширина 100% от окна просмотра */
+  height: 100vh;
+  padding-top: 60px;
+  color: azure;
+  text-align: center;
+  font-size: 70px;
+}
