@@ -1,0 +1,55 @@
+.addForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 60px;
+  padding: 10px 15px;
+  gap: 30px;
+  background-color: hsl(302, 58%, 37%);
+  border-radius: 10px;
+
+  &__icon {
+    width: 50px;
+  }
+}
+
+.form {
+  display: grid;
+  gap: 30px;
+  z-index: 1;
+
+  &__block {
+    display: grid;
+    gap: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: hsla(302, 58%, 37%, 0.3);
+    backdrop-filter: blur(35px);
+    border-radius: 10px;
+
+    &::placeholder {
+      color: hsl(303, 30%, 56%);
+    }
+  }
+
+  &__addSong {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 15px;
+    gap: 30px;
+    background-color: hsl(302, 58%, 37%);
+    border-radius: 10px;
+  }
+}
+
+.addSong {
+  &__icon {
+    width: 50px;
+  }
+}
