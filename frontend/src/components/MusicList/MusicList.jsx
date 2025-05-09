@@ -9,7 +9,7 @@ import s from './MusicList.module.scss';
 const MusicList = () => {
   return (
     <div className={s.root}>
-      <h1>LALALLA</h1>
+      <h1>Music list</h1>
     </div>
   );
 };

@@ -8,13 +8,13 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 10px 15px;
+  padding: 20px 15px;
   gap: 30px;
   background-color: hsl(302, 58%, 37%);
   border-radius: 10px;
 
   &__icon {
-    width: 50px;
+    width: 30px;
   }
 }
 
@@ -52,7 +52,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 10px 15px;
+    padding: 20px 15px;
     gap: 30px;
     background-color: hsl(302, 58%, 37%);
     border-radius: 10px;
@@ -61,6 +61,6 @@
 
 .addSong {
   &__icon {
-    width: 50px;
+    width: 30px;
   }
 }

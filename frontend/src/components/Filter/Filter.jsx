@@ -9,7 +9,7 @@ import s from './Filter.module.scss';
 const Filter = () => {
   return (
     <div className={s.root}>
-      <h1> LALALAL </h1>
+      <h1> Filter </h1>
     </div>
   );
 };
