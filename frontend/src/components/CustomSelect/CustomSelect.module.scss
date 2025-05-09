@@ -1,0 +1,66 @@
+.reactSelect {
+  [class$='-control'] {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: hsla(302, 58%, 37%, 0.3);
+    backdrop-filter: blur(35px);
+    border: none;
+    border-radius: 10px;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  [class$='-hlgwow'] {
+    margin: 0;
+    padding: 0;
+  }
+
+  [class$='-singleValue'] {
+    margin: 0;
+    padding: 0;
+    color: white;
+  }
+
+  [class$='-19bb58m'] {
+    margin: 0;
+    padding: 0;
+  }
+
+  [class$='-placeholder'] {
+    margin: 0;
+    padding: 0;
+    color: hsl(303, 30%, 56%);
+  }
+
+  [class$='-indicatorSeparator'] {
+    display: none;
+  }
+
+  [class$='-indicatorContainer'] {
+    margin: 0;
+    padding: 0;
+  }
+
+  [class$='-Svg'] {
+    width: 30px;
+    fill: white;
+  }
+
+  [class$='-menu'] {
+    margin: 0;
+    padding: 0;
+    background-color: hsla(302, 58%, 37%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+  }
+
+  [class$='-option'] {
+    border-radius: 10px;
+    background-color: hsla(302, 58%, 37%);
+    &:hover {
+      background-color: rgb(63, 9, 61);
+      cursor: pointer;
+    }
+  }
+}
