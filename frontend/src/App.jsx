@@ -12,7 +12,6 @@ function App() {
     <div className={s.app}>
       <header className={s.title}>
         <h1>Music Libery App</h1>
-        
       </header>
       <main className={s.mainBlock}>
         <div className={s.leftColumn}>
