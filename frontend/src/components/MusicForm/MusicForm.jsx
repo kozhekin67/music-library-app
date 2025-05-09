@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import cx from 'classnames';
-// import { useDispatch, useSelector } from 'react-redux';
 
+import { addSong } from '../../redux/compositions/actionCreators';
 import options from '../../stubs/options';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -17,6 +18,21 @@ const MusicForm = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleFormHandler = () => setIsOpen(!isOpen);
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (value, { resetForm }) => {
+    const song = {
+      author: value.author,
+      composition: value.composition,
+      genre: value.genre,
+      date: value.date,
+      id: Date.now(),
+    };
+    dispatch(addSong(song));
+    resetForm();
+    setIsOpen(false);
+  };
 
   const validationSchema = Yup.object({
     author: Yup.string()
@@ -54,9 +70,7 @@ const MusicForm = () => {
         <Formik
           initialValues={{ author: '', composition: '', genre: '', date: '' }}
           validationSchema={validationSchema}
-          onSubmit={(values) => {
-            console.log('Отправленные данные:', values);
-          }}
+          onSubmit={handleSubmit}
         >
           {({ values, handleChange, setFieldValue }) => (
             <Form className={s.form}>
@@ -110,7 +124,6 @@ const MusicForm = () => {
                 <Input
                   className={s.form__input}
                   name="date"
-                  type="data"
                   value={values.date}
                   onChange={handleChange}
                   placeholder="ДД.ММ.ГГГГ"
