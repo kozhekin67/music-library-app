@@ -6,3 +6,10 @@ export const addSong = (newSong) => {
     payload: newSong,
   };
 };
+
+export const deleteSong = (id) => {
+  return {
+    type: a.DELELTE_SONG,
+    payload: id,
+  };
+};

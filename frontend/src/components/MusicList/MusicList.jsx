@@ -1,5 +1,6 @@
 import { React } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteSong } from '../../redux/compositions/actionCreators';
 
 import Button from '../Button/Button';
 import { ReactComponent as SongIcon } from '../svg/SongIcon.svg';
@@ -11,6 +12,9 @@ import s from './MusicList.module.scss';
 
 const MusicList = () => {
   const songs = useSelector((state) => state.songs);
+  const dispatch = useDispatch();
+
+  const handleDeleteSong = (e, id) => dispatch(deleteSong(id));
   return (
     <div className={s.root}>
       <h1 className={s.titleList}>Music list</h1>
@@ -37,6 +41,8 @@ const MusicList = () => {
               />
               <Button
                 className={s.rightColumn__button}
+                onClick={handleDeleteSong}
+                cbData={song.id}
                 image={<Removal className={s.rightColumn__icon} />}
               />
             </div>
