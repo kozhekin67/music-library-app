@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -21,12 +21,12 @@ const MusicForm = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (value, { resetForm }) => {
+  const handleSubmit = (values, { resetForm }) => {
     const song = {
-      author: value.author,
-      composition: value.composition,
-      genre: value.genre,
-      date: value.date,
+      author: values.author,
+      composition: values.composition,
+      genre: values.genre,
+      date: values.date,
       id: Date.now(),
     };
     dispatch(addSong(song));
