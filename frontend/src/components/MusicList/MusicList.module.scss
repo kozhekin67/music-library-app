@@ -12,6 +12,7 @@
 }
 
 .list {
+  position: relative;
   display: grid;
   gap: 10px;
 
@@ -65,4 +66,15 @@
     width: 45px;
     fill: white;
   }
+}
+
+.ViewWindowBlock {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  width: 75%;
+  background-color: #630263;
+  border-radius: 10px;
 }
