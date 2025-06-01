@@ -1,15 +1,28 @@
-import { React } from 'react';
-//import { Formik, Form } from 'formik';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setTextFilter,
+  selectTextFilter,
+} from '../../redux/slices/fllterSlise';
 
-//import Button from '../Button/Button';
+import Input from '../Input/Input';
 
 import s from './Filter.module.scss';
 
 const Filter = () => {
+  const dispatch = useDispatch();
+  const textFilter = useSelector(selectTextFilter);
+  const handleTextFilterChange = (event) => {
+    dispatch(setTextFilter(event.target.value));
+  };
+
   return (
-    <div className={s.root}>
-      <h1> Filter </h1>
+    <div className={s.block}>
+      <Input
+        className={s.block__input}
+        placeholder="Filter by author/composition"
+        value={textFilter}
+        onChange={handleTextFilterChange}
+      />
     </div>
   );
 };

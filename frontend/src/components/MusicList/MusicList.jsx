@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteSong } from '../../redux/compositions/actionCreators';
+import { selectTextFilter } from '../../redux/slices/fllterSlise';
 import useClickOutside from '../hooks/useClickOutside';
 
 import Button from '../Button/Button';
@@ -18,6 +19,7 @@ const MusicList = () => {
   const ref = useClickOutside(() => setSongViewId(null));
 
   const songs = useSelector((state) => state.songs);
+  const textFilter = useSelector(selectTextFilter);
   const dispatch = useDispatch();
 
   const handleDeleteSong = (e, id) => dispatch(deleteSong(id));
@@ -34,11 +36,18 @@ const MusicList = () => {
     };
   }, []);
 
+  const filterSongs = songs.filter((song) => {
+    const matchesText = (song.author + song.composition)
+      .toLowerCase()
+      .includes(textFilter.toLowerCase());
+    return matchesText;
+  });
+
   return (
     <div className={s.root}>
       <h1 className={s.titleList}>Music list</h1>
       <ul className={s.list}>
-        {songs.map((song) => (
+        {filterSongs.map((song) => (
           <li className={s.list__item} key={song.id}>
             <div className={s.leftColumn}>
               <SongIcon className={s.leftColumn__icon} />

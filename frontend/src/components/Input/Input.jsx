@@ -1,5 +1,4 @@
 import React from 'react';
-import { Field } from 'formik';
 import { string, func } from 'prop-types';
 import cx from 'classnames';
 
@@ -16,7 +15,7 @@ const Input = (props) => {
   } = props;
 
   return (
-    <Field
+    <input
       name={name}
       className={cx(s.root, className)}
       placeholder={placeholder}
