@@ -4,7 +4,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import cx from 'classnames';
 
-import { addSong } from '../../redux/compositions/actionCreators';
+import { addSong } from '../../redux/slices/songsSlise';
 import options from '../../stubs/options';
 import Button from '../Button/Button';
 import Input from '../Input/Input';

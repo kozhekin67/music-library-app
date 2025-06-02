@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteSong } from '../../redux/compositions/actionCreators';
-import { selectTextFilter } from '../../redux/slices/fllterSlise';
+import { deleteSong } from '../../redux/slices/songsSlise';
+import { selectTextFilter } from '../../redux/slices/filterSlise';
 import useClickOutside from '../hooks/useClickOutside';
 
 import Button from '../Button/Button';
@@ -18,7 +18,7 @@ const MusicList = () => {
 
   const ref = useClickOutside(() => setSongViewId(null));
 
-  const songs = useSelector((state) => state.songs);
+  const songs = useSelector((state) => state.songs.songs);
   const textFilter = useSelector(selectTextFilter);
   const dispatch = useDispatch();
 

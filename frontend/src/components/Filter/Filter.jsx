@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setTextFilter,
   selectTextFilter,
-} from '../../redux/slices/fllterSlise';
+} from '../../redux/slices/filterSlise';
 
 import Input from '../Input/Input';
 

@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import songsReducer from './compositions/reducer';
-import filterReducer from './slices/fllterSlise';
+import songsReducer from './slices/songsSlise';
+import filterReducer from './slices/filterSlise';
 
 const store = configureStore({
   reducer: {
