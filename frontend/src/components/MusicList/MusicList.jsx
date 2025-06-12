@@ -6,6 +6,8 @@ import useClickOutside from '../hooks/useClickOutside';
 
 import Button from '../Button/Button';
 import ViewWindow from '../ViewWindow/ViewWindow';
+import Editing from '../Editing/EditingForm';
+
 import { ReactComponent as SongIcon } from '../svg/SongIcon.svg';
 import { ReactComponent as Edit } from '../svg/Edit.svg';
 import { ReactComponent as Viewing } from '../svg/Viewing.svg';
@@ -15,8 +17,11 @@ import s from './MusicList.module.scss';
 
 const MusicList = () => {
   const [songViewId, setSongViewId] = useState(null);
+  const [songEditingId, setSongEditingId] = useState(null);
 
-  const ref = useClickOutside(() => setSongViewId(null));
+  const ref = useClickOutside(
+    () => setSongViewId(null) || setSongEditingId(null)
+  );
 
   const songs = useSelector((state) => state.songs.songs);
   const textFilter = useSelector(selectTextFilter);
@@ -24,6 +29,8 @@ const MusicList = () => {
 
   const handleDeleteSong = (e, id) => dispatch(deleteSong(id));
   const handleOpenQuickView = (e, id) => setSongViewId(id);
+  const handleOpenEditind = (e, id) => setSongEditingId(id);
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
@@ -61,6 +68,8 @@ const MusicList = () => {
             <div className={s.rightColumn}>
               <Button
                 className={s.rightColumn__button}
+                onClick={handleOpenEditind}
+                cbData={song.id}
                 image={<Edit className={s.rightColumn__icon} />}
               />
               <Button
@@ -84,6 +93,16 @@ const MusicList = () => {
                   genre={song.genre}
                   date={song.date}
                   onClick={handleOpenQuickView}
+                />
+              )}
+              {songEditingId === song.id && (
+                <Editing
+                  className={s.editingBlock}
+                  ref={ref}
+                  author={song.author}
+                  composition={song.composition}
+                  genre={song.genre}
+                  date={song.date}
                 />
               )}
             </div>

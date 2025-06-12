@@ -12,7 +12,7 @@ const songsSlice = createSlice({
     },
 
     deleteSong(state, action) {
-      state.songs = state.songs.filter((song) => song.id !== action.payload.id);
+      state.songs = state.songs.filter((song) => song.id !== action.payload);
     },
   },
 });

@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import cx from 'classnames';
 
+import validationSchema from '../../utils/validationSchema';
 import { addSong } from '../../redux/slices/songsSlise';
-import options from '../../stubs/options';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
-import CustomSelect from '../CustomSelect/CustomSelect';
+import Dropdown from '../CustomSelect/CustomSelect';
 import { ReactComponent as FormIcon } from '../svg/Form.svg';
 import { ReactComponent as AddSong } from '../svg/AddSong.svg';
 
@@ -32,29 +31,6 @@ const MusicForm = () => {
     dispatch(addSong(song));
     resetForm();
     setIsOpen(false);
-  };
-
-  const validationSchema = Yup.object({
-    author: Yup.string()
-      .required('Введите автора')
-      .min(2, 'введите минимум 2 символа')
-      .max(50, 'введите максимум 50 символов'),
-    composition: Yup.string()
-      .required('Введите композицию')
-      .min(2, 'введите минимум 2 символа')
-      .max(50, 'введите максимум 50 символов'),
-    genre: Yup.string().required('Выберите жанр'),
-    date: Yup.string()
-      .required('Дата обязательна')
-      .matches(/^\d{2}\.\d{2}\.\d{4}$/, 'Формат: ДД.ММ.ГГГГ'),
-  });
-
-  const findSelectOption = (genre) => {
-    options.find((option) => option.value === genre);
-  };
-
-  const handleGenreChange = (setFieldValue) => (option) => {
-    setFieldValue('genre', option.value);
   };
 
   return (
@@ -106,12 +82,9 @@ const MusicForm = () => {
               </div>
               <div className={s.form__block}>
                 <label className={s.form__label}>Genre</label>
-                <CustomSelect
-                  placeholder="Choose a genre"
-                  name="genre"
-                  value={findSelectOption(values.genre)}
-                  onChange={handleGenreChange(setFieldValue)}
-                  options={options}
+                <Dropdown
+                  value={values.genre}
+                  onChange={(value) => setFieldValue('genre', value)}
                 />
                 <ErrorMessage
                   className={s.form__errorText}
