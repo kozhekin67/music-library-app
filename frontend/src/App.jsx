@@ -17,7 +17,6 @@ function App() {
         <div className={s.leftColumn}>
           <MusicForm />
         </div>
-        
         <div className={s.rightColumn}>
           <Filter />
           <MusicList />

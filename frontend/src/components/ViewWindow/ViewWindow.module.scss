@@ -1,0 +1,27 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+}
+
+.informationBlock {
+  display: grid;
+  gap: 20px;
+}
+
+.block {
+  display: grid;
+  gap: 10px;
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__text {
+    color: darkgray;
+  }
+}
+
+.hideButton {
+  width: 45px;
+  height: 45px;
+}

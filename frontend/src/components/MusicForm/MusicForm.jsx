@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import cx from 'classnames';
-// import { useDispatch, useSelector } from 'react-redux';
 
-import options from '../../stubs/options';
+import validationSchema from '../../utils/validationSchema';
+import { addSong } from '../../redux/slices/songsSlise';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
-import CustomSelect from '../CustomSelect/CustomSelect';
+import Dropdown from '../CustomSelect/CustomSelect';
 import { ReactComponent as FormIcon } from '../svg/Form.svg';
 import { ReactComponent as AddSong } from '../svg/AddSong.svg';
 
@@ -18,27 +18,19 @@ const MusicForm = () => {
 
   const toggleFormHandler = () => setIsOpen(!isOpen);
 
-  const validationSchema = Yup.object({
-    author: Yup.string()
-      .required('Введите автора')
-      .min(2, 'введите минимум 2 символа')
-      .max(50, 'введите максимум 50 символов'),
-    composition: Yup.string()
-      .required('Введите композицию')
-      .min(2, 'введите минимум 2 символа')
-      .max(50, 'введите максимум 50 символов'),
-    genre: Yup.string().required('Выберите жанр'),
-    date: Yup.string()
-      .required('Дата обязательна')
-      .matches(/^\d{2}\.\d{2}\.\d{4}$/, 'Формат: ДД.ММ.ГГГГ'),
-  });
+  const dispatch = useDispatch();
 
-  const findSelectOption = (genre) => {
-    options.find((option) => option.value === genre);
-  };
-
-  const handleGenreChange = (setFieldValue) => (option) => {
-    setFieldValue('genre', option.value);
+  const handleSubmit = (values, { resetForm }) => {
+    const song = {
+      author: values.author,
+      composition: values.composition,
+      genre: values.genre,
+      date: values.date,
+      id: Date.now(),
+    };
+    dispatch(addSong(song));
+    resetForm();
+    setIsOpen(false);
   };
 
   return (
@@ -54,9 +46,7 @@ const MusicForm = () => {
         <Formik
           initialValues={{ author: '', composition: '', genre: '', date: '' }}
           validationSchema={validationSchema}
-          onSubmit={(values) => {
-            console.log('Отправленные данные:', values);
-          }}
+          onSubmit={handleSubmit}
         >
           {({ values, handleChange, setFieldValue }) => (
             <Form className={s.form}>
@@ -92,12 +82,9 @@ const MusicForm = () => {
               </div>
               <div className={s.form__block}>
                 <label className={s.form__label}>Genre</label>
-                <CustomSelect
-                  placeholder="Choose a genre"
-                  name="genre"
-                  value={findSelectOption(values.genre)}
-                  onChange={handleGenreChange(setFieldValue)}
-                  options={options}
+                <Dropdown
+                  value={values.genre}
+                  onChange={(value) => setFieldValue('genre', value)}
                 />
                 <ErrorMessage
                   className={s.form__errorText}
@@ -110,7 +97,6 @@ const MusicForm = () => {
                 <Input
                   className={s.form__input}
                   name="date"
-                  type="data"
                   value={values.date}
                   onChange={handleChange}
                   placeholder="ДД.ММ.ГГГГ"

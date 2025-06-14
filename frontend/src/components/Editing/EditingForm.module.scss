@@ -1,0 +1,43 @@
+.form {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  &__block {
+    position: relative;
+    display: grid;
+    gap: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: hsla(302, 58%, 37%, 0.3);
+    backdrop-filter: blur(35px);
+    border-radius: 10px;
+    line-height: 110%;
+
+    &::placeholder {
+      color: hsl(303, 30%, 56%);
+    }
+  }
+
+  &__buttonsBlock {
+    display: flex;
+    grid-column: auto / span 2;
+    gap: 20px;
+  }
+
+  &__button {
+    padding: 20px 15px;
+    border-radius: 10px;
+  }
+
+  &__button_save {
+    background-color: hsl(302, 58%, 37%);
+  }
+  &__button_delete {
+    background-color: rgb(63, 9, 61);
+  }
+}

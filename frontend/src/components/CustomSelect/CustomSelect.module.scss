@@ -1,63 +1,51 @@
-.reactSelect {
-  [class$='-control'] {
+.root {
+  position: relative;
+}
+
+.button {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: hsla(302, 58%, 37%, 0.3);
+  backdrop-filter: blur(35px);
+  border: none;
+  border-radius: 10px;
+  line-height: 110%;
+  color: hsl(303, 30%, 56%);
+  box-shadow: none;
+  cursor: pointer;
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 30px;
+    fill: #b06dad;
+    transition: transform 0.5s, fill 0.5s;
+  }
+
+  &__icon_active {
+    fill: white;
+    transform: rotate(180deg);
+    transition: transform 0.5s, fill 0.5s;
+  }
+}
+
+.selected {
+  color: white;
+}
+
+.list {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  max-height: 250px;
+  background-color: hsla(302, 58%, 37%);
+  border-radius: 10px;
+  overflow-y: auto;
+
+  &__item {
     width: 100%;
     padding: 10px 15px;
-    background-color: hsla(302, 58%, 37%, 0.3);
-    backdrop-filter: blur(35px);
-    border: none;
-    border-radius: 10px;
-    box-shadow: none;
-    cursor: pointer;
-  }
-
-  [class$='-hlgwow'] {
-    margin: 0;
-    padding: 0;
-  }
-
-  [class$='-singleValue'] {
-    margin: 0;
-    padding: 0;
-    color: white;
-  }
-
-  [class$='-19bb58m'] {
-    margin: 0;
-    padding: 0;
-  }
-
-  [class$='-placeholder'] {
-    margin: 0;
-    padding: 0;
-    color: hsl(303, 30%, 56%);
-  }
-
-  [class$='-indicatorSeparator'] {
-    display: none;
-  }
-
-  [class$='-indicatorContainer'] {
-    margin: 0;
-    padding: 0;
-  }
-
-  [class$='-Svg'] {
-    width: 30px;
-    fill: white;
-  }
-
-  [class$='-menu'] {
-    margin: 0;
-    padding: 0;
-    background-color: hsla(302, 58%, 37%);
-    border: none;
-    border-radius: 10px;
-    color: white;
-  }
-
-  [class$='-option'] {
-    border-radius: 10px;
-    background-color: hsla(302, 58%, 37%);
     &:hover {
       background-color: rgb(63, 9, 61);
       cursor: pointer;
