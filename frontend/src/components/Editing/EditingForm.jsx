@@ -1,20 +1,41 @@
 import { React } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import cx from 'classnames';
 
 import validationSchema from '../../utils/validationSchema';
-
-//import options from '../../stubs/options';
+import { editSong } from '../../redux/slices/songsSlise';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Dropdown from '../CustomSelect/CustomSelect';
 
 import s from './EditingForm.module.scss';
 
-const EditingForm = ({ ref, className, author, composition, genre, date }) => {
-  const handleSubmit = (values) => {
-    console.log('отправленные данные', values);
+const EditingForm = ({
+  ref,
+  className,
+  author,
+  composition,
+  genre,
+  date,
+  onClick,
+  cbData,
+  openEditind,
+}) => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(
+      editSong({
+        author: values.author,
+        composition: values.composition,
+        genre: values.genre,
+        date: values.date,
+        id: cbData,
+      })
+    );
+    resetForm();
+    openEditind(null);
   };
 
   return (
@@ -92,10 +113,13 @@ const EditingForm = ({ ref, className, author, composition, genre, date }) => {
             <div className={s.form__buttonsBlock}>
               <Button
                 className={cx(s.form__button, s.form__button_delete)}
+                onClick={onClick}
+                cbData={cbData}
                 text="Delete"
               />
               <Button
                 className={cx(s.form__button, s.form__button_save)}
+                type="submit"
                 text="Save"
               />
             </div>

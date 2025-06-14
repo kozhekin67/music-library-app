@@ -14,9 +14,18 @@ const songsSlice = createSlice({
     deleteSong(state, action) {
       state.songs = state.songs.filter((song) => song.id !== action.payload);
     },
+
+    editSong(state, action) {
+      const { id, author, composition, genre, date } = action.payload;
+      state.songs = state.songs.map((song) =>
+        song.id === action.payload.id
+          ? { ...song, id, author, composition, genre, date }
+          : { ...song }
+      );
+    },
   },
 });
 
-export const { addSong, deleteSong } = songsSlice.actions;
+export const { addSong, deleteSong, editSong } = songsSlice.actions;
 
 export default songsSlice.reducer;

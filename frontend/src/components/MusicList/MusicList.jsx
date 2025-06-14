@@ -103,6 +103,9 @@ const MusicList = () => {
                   composition={song.composition}
                   genre={song.genre}
                   date={song.date}
+                  onClick={handleDeleteSong}
+                  cbData={song.id}
+                  openEditind={handleOpenEditind}
                 />
               )}
             </div>
