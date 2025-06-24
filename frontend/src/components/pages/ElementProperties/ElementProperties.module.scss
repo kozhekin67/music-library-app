@@ -1,0 +1,56 @@
+.app {
+  width: 80%;
+  margin: auto;
+}
+
+.title {
+  text-align: start;
+  margin-bottom: 50px;
+}
+
+.informationBlock {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 50px;
+  padding: 50px;
+  gap: 50px;
+  background-color: rgba(128, 0, 128, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  font-size: 30px;
+}
+
+.block {
+  display: grid;
+  gap: 10px;
+
+  &__title {
+    font-weight: 600;
+    font-size: 50px;
+  }
+
+  &__text {
+    color: darkgray;
+  }
+}
+
+.button {
+  float: right;
+  display: flex;
+  padding: 50px;
+  gap: 30px;
+  font-size: 30px;
+  background-color: hsl(302, 58%, 37%);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+
+  &__icon {
+    width: 30px;
+    margin: auto;
+  }
+
+  &__text {
+    margin: auto;
+  }
+}

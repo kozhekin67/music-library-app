@@ -18,7 +18,7 @@ const songsSlice = createSlice({
     editSong(state, action) {
       const { id, author, composition, genre, date } = action.payload;
       state.songs = state.songs.map((song) =>
-        song.id === action.payload.id
+        song.id === id
           ? { ...song, id, author, composition, genre, date }
           : { ...song }
       );
