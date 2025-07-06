@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import cx from 'classnames';
+import { v4 as uuidv4 } from 'uuid';
 
 import validationSchema from '../../../utils/validationSchema';
-import { addSong } from '../../../redux/slices/songsSlise';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Dropdown from '../CustomSelect/CustomSelect';
@@ -26,9 +26,9 @@ const MusicForm = () => {
       composition: values.composition,
       genre: values.genre,
       date: values.date,
-      id: Date.now(),
+      id: uuidv4(),
     };
-    dispatch(addSong(song));
+    dispatch({ type: 'songs/createSong', payload: song });
     resetForm();
     setIsOpen(false);
   };

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteSong } from '../../../redux/slices/songsSlise';
-import { selectTextFilter } from '../../../redux/slices/filterSlise';
+import { selectTextFilter } from '../../../redux/slices/filterSlice';
 import useClickOutside from '../../hooks/useClickOutside';
 
 import Button from '../Button/Button';
@@ -29,7 +28,13 @@ const MusicList = () => {
   const textFilter = useSelector(selectTextFilter);
   const dispatch = useDispatch();
 
-  const handleDeleteSong = (e, id) => dispatch(deleteSong(id));
+  useEffect(() => {
+    dispatch({ type: 'songs/fetchSongs' });
+  }, [dispatch]);
+
+  const handleDeleteSong = (e, id) =>
+    dispatch({ type: 'songs/removeSong', payload: id });
+
   const handleOpenQuickView = (e, id) => setSongViewId(id);
   const handleOpenEditind = (e, id) => setSongEditingId(id);
 

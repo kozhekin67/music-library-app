@@ -9,7 +9,7 @@ import s from './ElementProperties.module.scss';
 const ElementProperties = () => {
   const { id } = useParams();
   const songs = useSelector((state) => state.songs.songs);
-  const song = songs.find((song) => song.id === parseInt(id));
+  const song = songs.find((song) => song.id === id);
 
   return (
     <div className={s.app}>
