@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import {
   setTextFilter,
   selectTextFilter,
-} from '../../../redux/slices/filterSlise';
+} from '../../../redux/slices/filterSlice';
 
 import Input from '../Input/Input';
 

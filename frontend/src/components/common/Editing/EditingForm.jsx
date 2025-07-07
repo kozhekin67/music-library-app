@@ -4,7 +4,6 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import cx from 'classnames';
 
 import validationSchema from '../../../utils/validationSchema';
-import { editSong } from '../../../redux/slices/songsSlise';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Dropdown from '../CustomSelect/CustomSelect';
@@ -25,15 +24,14 @@ const EditingForm = ({
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(
-      editSong({
-        author: values.author,
-        composition: values.composition,
-        genre: values.genre,
-        date: values.date,
-        id: cbData,
-      })
-    );
+    const editSong = {
+      author: values.author,
+      composition: values.composition,
+      genre: values.genre,
+      date: values.date,
+      id: cbData,
+    };
+    dispatch({ type: 'songs/editingSong', payload: editSong });
     resetForm();
     openEditind(null);
   };

@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
@@ -7,9 +8,23 @@ import { ReactComponent as Back } from '../../svg/Back.svg';
 import s from './ElementProperties.module.scss';
 
 const ElementProperties = () => {
+  const [loading, setLoading] = useState(true);
+
+  const dispatch = useDispatch();
   const { id } = useParams();
   const songs = useSelector((state) => state.songs.songs);
-  const song = songs.find((song) => song.id === parseInt(id));
+  const song = songs.find((song) => song.id === id);
+
+  useEffect(() => {
+    dispatch({ type: 'songs/fetchSongs' });
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, [dispatch]);
+
+  if (loading) {
+    return <div className={s.loading}>Loading...</div>;
+  }
 
   return (
     <div className={s.app}>

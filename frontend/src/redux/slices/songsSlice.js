@@ -23,9 +23,13 @@ const songsSlice = createSlice({
           : { ...song }
       );
     },
+
+    setSongs(state, action) {
+      state.songs = action.payload;
+    },
   },
 });
 
-export const { addSong, deleteSong, editSong } = songsSlice.actions;
+export const { addSong, deleteSong, editSong, setSongs } = songsSlice.actions;
 
 export default songsSlice.reducer;
