@@ -1,11 +1,18 @@
 {
   "songs": [
     {
-      "id": "21affaad-c410-40bf-b687-0bef666ff09e",
-      "author": "Нана",
+      "author": "Нанана",
       "composition": "фаина",
-      "genre": "Поп",
-      "date": "12.12.2026"
+      "genre": "Классика",
+      "date": "12.12.2026",
+      "id": "21affaad-c410-40bf-b687-0bef666ff09e"
+    },
+    {
+      "id": "486242a0-4119-4cd4-8949-c8c400e8fca6",
+      "author": "ове",
+      "composition": "овца",
+      "genre": "Рок",
+      "date": "12.12.1212"
     }
   ]
 }
