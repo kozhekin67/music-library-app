@@ -12,11 +12,10 @@ import { ReactComponent as SeparateWindow } from '../../svg/SeparateWindow.svg';
 import { ReactComponent as SongIcon } from '../../svg/SongIcon.svg';
 import { ReactComponent as Edit } from '../../svg/Edit.svg';
 import { ReactComponent as Viewing } from '../../svg/Viewing.svg';
-import { ReactComponent as Removal } from '../../svg/Removal.svg';
 
 import s from './MusicList.module.scss';
 
-const MusicList = () => {
+const MusicList = ({ closeFormTablet }) => {
   const [songViewId, setSongViewId] = useState(null);
   const [songEditingId, setSongEditingId] = useState(null);
 
@@ -35,8 +34,15 @@ const MusicList = () => {
   const handleDeleteSong = (e, id) =>
     dispatch({ type: 'songs/removeSong', payload: id });
 
-  const handleOpenQuickView = (e, id) => setSongViewId(id);
-  const handleOpenEditind = (e, id) => setSongEditingId(id);
+  const handleOpenQuickView = (e, id) => {
+    setSongViewId(id);
+    closeFormTablet();
+  };
+
+  const handleOpenEditind = (e, id) => {
+    setSongEditingId(id);
+    closeFormTablet();
+  };
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -64,7 +70,9 @@ const MusicList = () => {
         {filterSongs.map((song) => (
           <li className={s.list__item} key={song.id}>
             <div className={s.leftColumn}>
-              <SongIcon className={s.leftColumn__icon} />
+              <div>
+                <SongIcon className={s.leftColumn__icon} />
+              </div>
               <div className={s.leftColumn__name}>
                 <div className={s.leftColumn__author}>{song.author}</div>
                 <div className={s.leftColumn__composition}>
@@ -87,12 +95,6 @@ const MusicList = () => {
                 onClick={handleOpenQuickView}
                 cbData={song.id}
                 image={<Viewing className={s.rightColumn__icon} />}
-              />
-              <Button
-                className={s.rightColumn__button}
-                onClick={handleDeleteSong}
-                cbData={song.id}
-                image={<Removal className={s.rightColumn__icon} />}
               />
               {songViewId === song.id && (
                 <ViewWindow

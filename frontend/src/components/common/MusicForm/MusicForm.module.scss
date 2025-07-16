@@ -1,21 +1,9 @@
+@import 'src/styles/mixins.scss';
+
 .root {
+  z-index: 1;
   display: grid;
   gap: 20px;
-}
-
-.addForm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px 15px;
-  gap: 30px;
-  background-color: hsl(302, 58%, 37%);
-  border-radius: 10px;
-
-  &__icon {
-    width: 30px;
-  }
 }
 
 .form {
@@ -30,14 +18,19 @@
 
   &__input {
     width: 100%;
-    padding: 10px 15px;
+    padding: 15px;
     line-height: 110%;
-    background-color: hsla(302, 58%, 37%, 0.3);
+    background-color: rgba(128, 0, 128, 0.4);
     backdrop-filter: blur(35px);
     border-radius: 10px;
 
     &::placeholder {
       color: hsl(303, 30%, 56%);
+    }
+
+    @include mobile {
+      padding: 10px;
+      border-radius: 5px;
     }
   }
 
@@ -46,6 +39,11 @@
     left: 15px;
     top: 100px;
     font-size: 20px;
+
+    @include mobile {
+      top: 63px;
+      font-size: 14px;
+    }
   }
 
   &__addSong {
@@ -55,13 +53,23 @@
     width: 100%;
     padding: 20px 15px;
     gap: 30px;
+    white-space: nowrap;
     background-color: hsl(302, 58%, 37%);
     border-radius: 10px;
+
+    @include mobile {
+      padding: 10px;
+      border-radius: 5px;
+    }
   }
 }
 
 .addSong {
   &__icon {
     width: 30px;
+
+    @include mobile {
+      width: 20px;
+    }
   }
 }

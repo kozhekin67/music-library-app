@@ -1,25 +1,47 @@
 // import './styles/globals.scss';
 // import './styles/reset.scss';
+import { useState } from 'react';
+import cx from 'classnames';
 
 import MusicForm from '../../common/MusicForm/MusicForm';
 import Filter from '../../common/Filter/Filter';
 import MusicList from '../../common/MusicList/MusicList';
+import Button from '../../common/Button/Button';
+
+import { ReactComponent as FormIcon } from '../../svg/Form.svg';
 
 import s from './Home.module.scss';
 
 const Home = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleFormHandler = () => setIsOpen(!isOpen);
+  const closeFormHandler = () => setIsOpen(false);
+  const closeFormTabletHandler = () => {
+    if (window.innerWidth < 1510) {
+      closeFormHandler();
+    }
+  };
+
   return (
     <div className={s.root}>
       <header className={s.title}>
         <h1>Music Libery App</h1>
       </header>
-      <main className={s.mainBlock}>
-        <div className={s.leftColumn}>
-          <MusicForm />
+      <main className={cx(s.mainBlock, { [s.mainBlock_twoColumn]: isOpen })}>
+        <div className={cx(s.leftColumn, { [s.leftColumn_visible]: isOpen })}>
+          <MusicForm closeForm={closeFormHandler} />
         </div>
-        <div className={s.rightColumn}>
-          <Filter />
-          <MusicList />
+        <div className={cx(s.rightColumn, { [s.rightColumn_reduced]: isOpen })}>
+          <div className={s.rightColumn__top}>
+            <Button
+              className={s.addForm}
+              image={<FormIcon className={s.addForm__icon} />}
+              onClick={toggleFormHandler}
+            />
+            <Filter />
+          </div>
+          <MusicList closeFormTablet={closeFormTabletHandler} />
         </div>
       </main>
     </div>

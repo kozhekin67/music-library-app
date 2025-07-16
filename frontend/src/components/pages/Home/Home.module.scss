@@ -1,22 +1,118 @@
+@import 'src/styles/mixins.scss';
+
 .title {
-  width: 80%;
+  width: 90%;
   margin: 0 auto 50px;
   padding: 0 50px;
   text-align: start;
+
+  @include mobile {
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    font-size: 30px;
+  }
 }
 
 .mainBlock {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 3fr;
-  width: 80%;
-  min-height: 780px;
-  max-height: 80%;
+  position: relative;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
-  padding: 50px;
+  padding: 0 50px;
+  font-size: 30px;
+  //overflow: hidden;
+
+  @include tablet {
+    justify-content: flex-start;
+  }
+  @include mobile {
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    font-size: 16px;
+  }
+}
+
+.mainBlock_twoColumn {
   gap: 50px;
-  background-color: rgba(128, 0, 128, 0.2);
+}
+
+.leftColumn {
+  opacity: 0;
+  width: 0;
+}
+.leftColumn_visible {
+  z-index: 1;
+  opacity: 1;
+  padding: 50px;
+  width: 30%;
+  //height: 980px;
+  background-color: rgba(128, 0, 128, 0.3);
   backdrop-filter: blur(15px);
   border-radius: 25px;
-  font-size: 30px;
+
+  @include tablet {
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    width: 50%;
+    height: 680px;
+  }
+
+  @include mobile {
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 420px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+
+.rightColumn {
+  position: relative;
+  padding: 50px;
+  width: 100%;
+  //height: 100%;
+  background-color: rgba(128, 0, 128, 0.3);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  transition: width 0.5s ease;
+
+  @include mobile {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 30px;
+
+    @include mobile {
+      gap: 10px;
+    }
+  }
+}
+
+.rightColumn_reduced {
+  width: 80%;
+  transition: width 0.5s ease;
+
+  @include tablet {
+    width: 100%;
+  }
+}
+
+.addForm {
+  border-radius: 10px;
+
+  &__icon {
+    width: 45px;
+
+    @include mobile {
+      width: 20px;
+    }
+  }
 }

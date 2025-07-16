@@ -1,8 +1,16 @@
+@import 'src/styles/mixins.scss';
+
 .form {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
   &__block {
     position: relative;
@@ -12,14 +20,31 @@
 
   &__input {
     width: 100%;
-    padding: 10px 15px;
+    padding: 15px;
     background-color: hsla(302, 58%, 37%, 0.3);
     backdrop-filter: blur(35px);
     border-radius: 10px;
     line-height: 110%;
 
+    @include mobile {
+      border-radius: 5px;
+      padding: 10px;
+    }
+
     &::placeholder {
       color: hsl(303, 30%, 56%);
+    }
+  }
+
+  &__errorText {
+    position: absolute;
+    left: 15px;
+    top: 100px;
+    font-size: 20px;
+
+    @include mobile {
+      top: 63px;
+      font-size: 14px;
     }
   }
 
@@ -32,11 +57,17 @@
   &__button {
     padding: 20px 15px;
     border-radius: 10px;
+
+    @include mobile {
+      padding: 10px;
+      border-radius: 5px;
+    }
   }
 
   &__button_save {
     background-color: hsl(302, 58%, 37%);
   }
+
   &__button_delete {
     background-color: rgb(63, 9, 61);
   }

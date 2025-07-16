@@ -1,10 +1,12 @@
+@import 'src/styles/mixins.scss';
+
 .root {
   position: relative;
 }
 
 .button {
   width: 100%;
-  padding: 10px 15px;
+  padding: 15px;
   background-color: hsla(302, 58%, 37%, 0.3);
   backdrop-filter: blur(35px);
   border: none;
@@ -14,6 +16,11 @@
   box-shadow: none;
   cursor: pointer;
 
+  @include mobile {
+    padding: 10px;
+    border-radius: 5px;
+  }
+
   &__icon {
     position: absolute;
     top: 0;
@@ -21,6 +28,10 @@
     width: 30px;
     fill: #b06dad;
     transition: transform 0.5s, fill 0.5s;
+
+    @include mobile {
+      width: 20px;
+    }
   }
 
   &__icon_active {
