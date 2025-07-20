@@ -1,4 +1,6 @@
 @import 'src/styles/mixins.scss';
+@import 'src/styles/colors.scss';
+@import 'src/styles/transitions.scss';
 
 .root {
   z-index: 1;
@@ -17,59 +19,34 @@
   }
 
   &__input {
-    width: 100%;
-    padding: 15px;
-    line-height: 110%;
-    background-color: rgba(128, 0, 128, 0.4);
-    backdrop-filter: blur(35px);
-    border-radius: 10px;
-
-    &::placeholder {
-      color: hsl(303, 30%, 56%);
-    }
-
-    @include mobile {
-      padding: 10px;
-      border-radius: 5px;
-    }
+    @include input-style;
   }
 
   &__errorText {
-    position: absolute;
-    left: 15px;
-    top: 100px;
-    font-size: 20px;
-
-    @include mobile {
-      top: 63px;
-      font-size: 14px;
-    }
+    @include errorText-style;
   }
 
   &__addSong {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     width: 100%;
     padding: 20px 15px;
     gap: 30px;
     white-space: nowrap;
-    background-color: hsl(302, 58%, 37%);
+    background-color: $transparent-pink;
     border-radius: 10px;
+    transition: $background;
+
+    &:hover {
+      background-color: $pink;
+    }
+
+    &:active {
+      background-color: $red;
+    }
 
     @include mobile {
       padding: 10px;
       border-radius: 5px;
-    }
-  }
-}
-
-.addSong {
-  &__icon {
-    width: 30px;
-
-    @include mobile {
-      width: 20px;
     }
   }
 }

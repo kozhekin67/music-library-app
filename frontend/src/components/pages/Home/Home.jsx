@@ -1,5 +1,3 @@
-// import './styles/globals.scss';
-// import './styles/reset.scss';
 import { useState } from 'react';
 import cx from 'classnames';
 
@@ -30,12 +28,13 @@ const Home = () => {
       </header>
       <main className={cx(s.mainBlock, { [s.mainBlock_twoColumn]: isOpen })}>
         <div className={cx(s.leftColumn, { [s.leftColumn_visible]: isOpen })}>
-          <MusicForm closeForm={closeFormHandler} />
+          <MusicForm className={s.musicForm} closeForm={closeFormHandler} />
         </div>
         <div className={cx(s.rightColumn, { [s.rightColumn_reduced]: isOpen })}>
           <div className={s.rightColumn__top}>
             <Button
               className={s.addForm}
+              title="form"
               image={<FormIcon className={s.addForm__icon} />}
               onClick={toggleFormHandler}
             />

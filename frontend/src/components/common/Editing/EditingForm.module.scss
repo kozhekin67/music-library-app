@@ -1,4 +1,6 @@
 @import 'src/styles/mixins.scss';
+@import 'src/styles/colors.scss';
+@import 'src/styles/transitions.scss';
 
 .form {
   display: grid;
@@ -19,33 +21,11 @@
   }
 
   &__input {
-    width: 100%;
-    padding: 15px;
-    background-color: hsla(302, 58%, 37%, 0.3);
-    backdrop-filter: blur(35px);
-    border-radius: 10px;
-    line-height: 110%;
-
-    @include mobile {
-      border-radius: 5px;
-      padding: 10px;
-    }
-
-    &::placeholder {
-      color: hsl(303, 30%, 56%);
-    }
+    @include input-style;
   }
 
   &__errorText {
-    position: absolute;
-    left: 15px;
-    top: 100px;
-    font-size: 20px;
-
-    @include mobile {
-      top: 63px;
-      font-size: 14px;
-    }
+    @include errorText-style;
   }
 
   &__buttonsBlock {
@@ -65,10 +45,28 @@
   }
 
   &__button_save {
-    background-color: hsl(302, 58%, 37%);
+    background-color: $pink;
+    transition: $background;
+
+    &:hover {
+      background-color: $bright-pink;
+    }
+
+    &:active {
+      background-color: $red;
+    }
   }
 
   &__button_delete {
-    background-color: rgb(63, 9, 61);
+    background-color: $light-pink;
+    transition: $background;
+
+    &:hover {
+      background-color: $gray;
+    }
+
+    &:active {
+      background-color: $red;
+    }
   }
 }

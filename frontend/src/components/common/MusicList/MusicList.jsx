@@ -81,20 +81,26 @@ const MusicList = ({ closeFormTablet }) => {
               </div>
             </div>
             <div className={s.rightColumn}>
-              <Link className={s.rightColumn__button} to={`/song/${song.id}`}>
-                <SeparateWindow className={s.rightColumn__icon} />
+              <Link
+                className={s.panelButton}
+                title="open in a new window"
+                to={`/song/${song.id}`}
+              >
+                <SeparateWindow className={s.panelButton__icon} />
               </Link>
               <Button
-                className={s.rightColumn__button}
+                className={s.panelButton}
+                title="open the editing window"
                 onClick={handleOpenEditind}
                 cbData={song.id}
-                image={<Edit className={s.rightColumn__icon} />}
+                image={<Edit className={s.panelButton__icon} />}
               />
               <Button
-                className={s.rightColumn__button}
+                className={s.panelButton}
+                title="open a quick preview"
                 onClick={handleOpenQuickView}
                 cbData={song.id}
-                image={<Viewing className={s.rightColumn__icon} />}
+                image={<Viewing className={s.panelButton__icon} />}
               />
               {songViewId === song.id && (
                 <ViewWindow

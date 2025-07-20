@@ -1,4 +1,3 @@
-import React from 'react';
 import { string, func } from 'prop-types';
 import cx from 'classnames';
 
@@ -22,6 +21,7 @@ const Input = (props) => {
       type={type}
       value={value}
       onChange={onChange}
+      autocomplete="off"
       {...props}
     />
   );

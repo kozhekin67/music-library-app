@@ -1,0 +1,32 @@
+{
+  "songs": [
+    {
+      "author": "121ewevwvevwervwervwervwervwervwervervewrvwerv",
+      "composition": "Лисенок",
+      "genre": "Хип-хоп",
+      "date": "12.12.2024",
+      "id": "9f39d356-67af-45df-8e9d-f8d8088b65ed"
+    },
+    {
+      "author": "Ирина",
+      "composition": "Лисенок",
+      "genre": "Метал",
+      "date": "12.12.2026",
+      "id": "9828783e-553f-433e-95a4-83ce74b7af2c"
+    },
+    {
+      "id": "d934c751-3e5c-4a60-bf89-63f06b5a9d5f",
+      "author": "Ирина",
+      "composition": "Лисенок",
+      "genre": "Рок",
+      "date": "12.12.2026"
+    },
+    {
+      "id": "7b8e3f6d-4d91-4e32-843e-3fe8d093388d",
+      "author": "asc",
+      "composition": "asc",
+      "genre": "Рок",
+      "date": "23.23.2323"
+    }
+  ]
+}

@@ -3,11 +3,11 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import cx from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
+import { formattedText } from '../../../utils/formattedText';
 import validationSchema from '../../../utils/validationSchema';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Dropdown from '../CustomSelect/CustomSelect';
-import { ReactComponent as AddSong } from '../../svg/AddSong.svg';
 
 import s from './MusicForm.module.scss';
 
@@ -16,8 +16,8 @@ const MusicForm = ({ closeForm }) => {
 
   const handleSubmit = (values, { resetForm }) => {
     const song = {
-      author: values.author,
-      composition: values.composition,
+      author: formattedText(values.author),
+      composition: formattedText(values.composition),
       genre: values.genre,
       date: values.date,
       id: uuidv4(),
@@ -98,7 +98,6 @@ const MusicForm = ({ closeForm }) => {
               className={cx(s.form__addSong, s.addSong)}
               type="submit"
               text="Add song"
-              image={<AddSong className={s.addSong__icon} />}
             />
           </Form>
         )}

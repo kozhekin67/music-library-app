@@ -37,6 +37,7 @@ const ViewWindow = ({
       <div>
         <Button
           className={s.hideButton}
+          title="to close"
           onClick={onClick}
           image={<Hiding className={s.hideButton__icon} onBlur={onBlur} />}
         />

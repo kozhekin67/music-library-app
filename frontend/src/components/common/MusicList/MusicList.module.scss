@@ -1,14 +1,11 @@
 @import 'src/styles/mixins.scss';
+@import 'src/styles/colors.scss';
 
 .root {
   overflow-y: scroll;
   max-height: 60vh;
 
   @include tablet {
-    max-height: 70vh;
-  }
-
-  @include mobile {
     max-height: 70vh;
   }
 }
@@ -39,7 +36,7 @@
     align-items: center;
     gap: 20px;
     padding: 5px 20px;
-    background-color: rgba(128, 0, 128, 0.4);
+    background-color: $transparent-pink;
     border-radius: 10px;
 
     @include mobile {
@@ -77,7 +74,7 @@
   }
 
   &__composition {
-    color: #969c9c;
+    color: $gray;
     font-size: 28px;
     word-break: break-all;
 
@@ -98,66 +95,16 @@
 
 .rightColumn {
   display: flex;
+}
 
-  &__button {
-    padding: 10px;
-
-    @include mobile {
-      padding: 5px;
-    }
-  }
-
-  &__icon {
-    margin: auto;
-    width: 40px;
-    fill: white;
-
-    @include mobile {
-      width: 20px;
-    }
-  }
+.panelButton {
+  @include icon-button-style;
 }
 
 .ViewWindowBlock {
-  z-index: 3;
-  position: fixed;
-  top: 150px;
-  right: 50px;
-  padding: 30px;
-  width: 50%;
-  background-color: #630263;
-  border-radius: 10px;
-
-  @include tablet {
-    width: 90%;
-  }
-
-  @include mobile {
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
-  }
+  @include pop-up-window-style;
 }
 
 .editingBlock {
-  z-index: 3;
-  position: fixed;
-  top: 150px;
-  right: 50px;
-  padding: 20px;
-  width: 50%;
-  background-color: #630263;
-  border-radius: 10px;
-
-  @include tablet {
-    width: 90%;
-  }
-
-  @include mobile {
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
-  }
+  @include pop-up-window-style;
 }
