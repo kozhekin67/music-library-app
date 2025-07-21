@@ -2,8 +2,8 @@
 @import 'src/styles/colors.scss';
 
 .root {
-  overflow-y: scroll;
   max-height: 60vh;
+  overflow-y: scroll;
 
   @include tablet {
     max-height: 70vh;
@@ -34,15 +34,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
     padding: 5px 20px;
-    background-color: $transparent-pink;
     border-radius: 10px;
+    gap: 20px;
+    background-color: $transparent-pink;
 
     @include mobile {
-      gap: 10px;
       padding: 5px 10px;
       border-radius: 5px;
+      gap: 10px;
     }
   }
 }

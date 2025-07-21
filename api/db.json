@@ -1,9 +1,9 @@
 {
   "songs": [
     {
-      "author": "121ewevwvevwervwervwervwervwervwervervewrvwerv",
+      "author": "121 ewrvwerv",
       "composition": "Лисенок",
-      "genre": "Хип-хоп",
+      "genre": "Джаз",
       "date": "12.12.2024",
       "id": "9f39d356-67af-45df-8e9d-f8d8088b65ed"
     },
@@ -27,6 +27,41 @@
       "composition": "asc",
       "genre": "Рок",
       "date": "23.23.2323"
+    },
+    {
+      "id": "e463d55e-1b74-4824-861f-ae9007652531",
+      "author": "asxasx",
+      "composition": "asxasx",
+      "genre": "Джаз",
+      "date": "12.12.1212"
+    },
+    {
+      "id": "4a041484-3492-4167-9d0f-4a5963c03fcb",
+      "author": "asx.asx",
+      "composition": "124",
+      "genre": "Джаз",
+      "date": "12.23.3434"
+    },
+    {
+      "id": "8595593c-0823-48f0-a421-87cd526fa823",
+      "author": "asx asxsssss",
+      "composition": "qasx",
+      "genre": "Классика",
+      "date": "23.23.2323"
+    },
+    {
+      "id": "f74ad9ff-1da1-4a93-a3c1-31eecbef6817",
+      "author": "qw",
+      "composition": "qw",
+      "genre": "Классика",
+      "date": "12.12.1212"
+    },
+    {
+      "author": "никата",
+      "composition": "солнце",
+      "genre": "Джаз",
+      "date": "12.12.5241",
+      "id": "bb58a293-c089-4dcc-875d-713f9933310b"
     }
   ]
 }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectTextFilter } from '../../../redux/slices/filterSlice';
 import useClickOutside from '../../hooks/useClickOutside';
+import pressingEscape from '../../hooks/pressingEscape';
 
 import Button from '../Button/Button';
 import ViewWindow from '../ViewWindow/ViewWindow';
@@ -44,24 +45,15 @@ const MusicList = ({ closeFormTablet }) => {
     closeFormTablet();
   };
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        setSongViewId(null);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
   const filterSongs = songs.filter((song) => {
     const matchesText = (song.author + song.composition)
       .toLowerCase()
       .includes(textFilter.toLowerCase());
     return matchesText;
   });
+
+  pressingEscape(setSongViewId);
+  pressingEscape(setSongEditingId);
 
   return (
     <div className={s.root}>

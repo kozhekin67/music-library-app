@@ -8,7 +8,16 @@ import { ReactComponent as Arrow } from '../../svg/DropdownArrow.svg';
 
 import s from './CustomSelect.module.scss';
 
-const Dropdown = ({ value, onChange }) => {
+const Dropdown = ({ value, onChange, cbData }) => {
+  const handleChange = useCallback(
+    (e) => {
+      if (onChange) {
+        onChange(e, cbData);
+      }
+    },
+    [cbData, onChange]
+  );
+
   const placeholder = 'Сhoose a genre';
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
@@ -26,10 +35,10 @@ const Dropdown = ({ value, onChange }) => {
   const handleSelectingAnItem = useCallback(
     (label) => {
       setSelectedValue(label);
-      onChange(label);
+      handleChange(label);
       handleToggleDropdown();
     },
-    [onChange, handleToggleDropdown]
+    [handleChange, handleToggleDropdown]
   );
 
   useEffect(() => {

@@ -4,15 +4,17 @@ import cx from 'classnames';
 
 import s from './Button.module.scss';
 
-const Button = ({
-  className,
-  type = 'button',
-  text,
-  image,
-  onClick,
-  cbData,
-  title,
-}) => {
+const Button = (props) => {
+  const {
+    className,
+    type = 'button',
+    text,
+    image,
+    onClick,
+    cbData,
+    title,
+  } = props;
+
   const handleClick = useCallback(
     (e) => {
       if (onClick) {
@@ -28,6 +30,7 @@ const Button = ({
       type={type}
       title={title}
       onClick={handleClick}
+      {...props}
     >
       {text}
       {image}
@@ -42,6 +45,7 @@ Button.propTypes = {
   title: string,
   image: node,
   onClick: func,
+  sbData: string,
 };
 
 export default Button;
