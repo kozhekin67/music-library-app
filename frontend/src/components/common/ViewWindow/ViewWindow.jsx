@@ -34,11 +34,14 @@ const ViewWindow = ({
           <p className={s.block__text}>{date}</p>
         </div>
       </div>
-      <Button
-        className={s.hideButton}
-        onClick={onClick}
-        image={<Hiding className={s.hideButton__icon} onBlur={onBlur} />}
-      />
+      <div>
+        <Button
+          className={s.hideButton}
+          title="to close"
+          onClick={onClick}
+          image={<Hiding className={s.hideButton__icon} onBlur={onBlur} />}
+        />
+      </div>
     </div>
   );
 };

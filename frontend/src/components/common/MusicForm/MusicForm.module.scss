@@ -1,21 +1,11 @@
+@import 'src/styles/mixins.scss';
+@import 'src/styles/colors.scss';
+@import 'src/styles/transitions.scss';
+
 .root {
+  z-index: 1;
   display: grid;
   gap: 20px;
-}
-
-.addForm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px 15px;
-  gap: 30px;
-  background-color: hsl(302, 58%, 37%);
-  border-radius: 10px;
-
-  &__icon {
-    width: 30px;
-  }
 }
 
 .form {
@@ -29,39 +19,34 @@
   }
 
   &__input {
-    width: 100%;
-    padding: 10px 15px;
-    line-height: 110%;
-    background-color: hsla(302, 58%, 37%, 0.3);
-    backdrop-filter: blur(35px);
-    border-radius: 10px;
-
-    &::placeholder {
-      color: hsl(303, 30%, 56%);
-    }
+    @include input-style;
   }
 
   &__errorText {
-    position: absolute;
-    left: 15px;
-    top: 100px;
-    font-size: 20px;
+    @include errorText-style;
   }
 
   &__addSong {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     padding: 20px 15px;
-    gap: 30px;
-    background-color: hsl(302, 58%, 37%);
     border-radius: 10px;
-  }
-}
+    gap: 30px;
+    text-align: center;
+    white-space: nowrap;
+    background-color: $transparent-pink;
+    transition: $background;
 
-.addSong {
-  &__icon {
-    width: 30px;
+    &:hover {
+      background-color: $pink;
+    }
+
+    &:active {
+      background-color: $red;
+    }
+
+    @include mobile {
+      padding: 10px;
+      border-radius: 5px;
+    }
   }
 }

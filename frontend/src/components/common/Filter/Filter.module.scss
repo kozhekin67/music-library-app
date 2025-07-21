@@ -1,19 +1,9 @@
+@import 'src/styles/mixins.scss';
+
 .block {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  margin-bottom: 20px;
-  padding: 20px;
-  gap: 30px;
-  background-color: hsl(302, 58%, 37%);
-  border-radius: 10px;
 
   &__input {
-    width: 100%;
-
-    &::placeholder {
-      color: #b2bebe;
-    }
+    @include input-style;
   }
 }

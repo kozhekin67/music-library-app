@@ -1,3 +1,6 @@
+@import 'src/styles/mixins.scss';
+@import 'src/styles/colors.scss';
+
 .root {
   display: flex;
   justify-content: space-between;
@@ -11,17 +14,17 @@
 .block {
   display: grid;
   gap: 10px;
+  word-break: break-all;
 
   &__title {
     font-weight: 600;
   }
 
   &__text {
-    color: darkgray;
+    color: $gray;
   }
 }
 
 .hideButton {
-  width: 45px;
-  height: 45px;
+  @include icon-button-style;
 }

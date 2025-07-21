@@ -1,22 +1,113 @@
+@import 'src/styles/mixins.scss';
+@import 'src/styles/colors.scss';
+
 .title {
-  width: 80%;
+  width: 90%;
   margin: 0 auto 50px;
   padding: 0 50px;
   text-align: start;
+
+  @include mobile {
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    font-size: 30px;
+  }
 }
 
 .mainBlock {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 3fr;
-  width: 80%;
-  min-height: 780px;
-  max-height: 80%;
+  position: relative;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
-  padding: 50px;
+  padding: 0 50px;
+  font-size: 30px;
+
+  @include tablet {
+    justify-content: flex-start;
+  }
+  @include mobile {
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    font-size: 16px;
+  }
+}
+
+.mainBlock_twoColumn {
   gap: 50px;
-  background-color: rgba(128, 0, 128, 0.2);
+}
+
+.leftColumn {
+  opacity: 0;
+  width: 0%;
+  height: 680px;
+  padding: 50px 0;
+  background-color: $transparent-pink;
   backdrop-filter: blur(15px);
   border-radius: 25px;
-  font-size: 30px;
+  overflow: hidden;
+  transition: $opacity-width-padding;
+
+  @include tablet {
+    transition: $none;
+  }
+}
+
+.leftColumn_visible {
+  z-index: 1;
+  opacity: 1;
+  width: 35%;
+  padding: 50px;
+
+  @include tablet {
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    width: 50%;
+  }
+
+  @include mobile {
+    top: 100px;
+    left: 50%;
+    width: 80%;
+    height: 420px;
+    padding: 20px;
+    border-radius: 10px;
+    transform: translateX(-50%);
+  }
+}
+
+.rightColumn {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  border-radius: 25px;
+  background-color: $transparent-pink;
+  backdrop-filter: blur(15px);
+
+  @include mobile {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 30px;
+
+    @include mobile {
+      gap: 10px;
+    }
+  }
+}
+
+.rightColumn_reduced {
+  @include tablet {
+    width: 100%;
+  }
+}
+
+.addForm {
+  @include icon-button-style;
 }

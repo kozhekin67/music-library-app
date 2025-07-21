@@ -1,33 +1,56 @@
+@import 'src/styles/mixins.scss';
+@import 'src/styles/colors.scss';
+@import 'src/styles/transitions.scss';
+
 .root {
   position: relative;
 }
 
 .button {
   width: 100%;
-  padding: 10px 15px;
-  background-color: hsla(302, 58%, 37%, 0.3);
-  backdrop-filter: blur(35px);
-  border: none;
+  padding: 15px;
+  border: 1px solid $transparent-pink;
   border-radius: 10px;
+  background-color: $transparent-pink;
+  backdrop-filter: blur(35px);
   line-height: 110%;
-  color: hsl(303, 30%, 56%);
+  color: $light-pink;
   box-shadow: none;
+  white-space: nowrap;
+  transition: $background-border;
   cursor: pointer;
+
+  &:hover {
+    background-color: $pink;
+    backdrop-filter: blur(5px);
+  }
+
+  @include mobile {
+    padding: 10px;
+    border-radius: 5px;
+    white-space: normal;
+  }
 
   &__icon {
     position: absolute;
     top: 0;
     right: 20px;
     width: 30px;
-    fill: #b06dad;
-    transition: transform 0.5s, fill 0.5s;
+    fill: $light-pink;
+    transition: $transform-fill;
+
+    @include mobile {
+      width: 20px;
+    }
   }
 
   &__icon_active {
     fill: white;
     transform: rotate(180deg);
-    transition: transform 0.5s, fill 0.5s;
   }
+}
+.button_focus {
+  border: 1px solid $bright-pink;
 }
 
 .selected {
@@ -35,19 +58,31 @@
 }
 
 .list {
-  position: absolute;
   z-index: 1;
+  position: absolute;
   width: 100%;
-  max-height: 250px;
-  background-color: hsla(302, 58%, 37%);
+  height: 0;
   border-radius: 10px;
+  overflow: hidden;
+  background-color: $pink;
+  transition: $height;
+}
+.list_active {
+  height: 250px;
   overflow-y: auto;
+
+  @include mobile {
+    height: 150px;
+  }
 
   &__item {
     width: 100%;
     padding: 10px 15px;
+    transition: $background;
+
     &:hover {
-      background-color: rgb(63, 9, 61);
+      background-color: $violet;
+      transition: $background;
       cursor: pointer;
     }
   }

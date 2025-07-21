@@ -1,11 +1,19 @@
+@import 'src/styles/mixins.scss';
+@import 'src/styles/colors.scss';
+@import 'src/styles/transitions.scss';
+
 .app {
   width: 80%;
   margin: auto;
 }
 
 .title {
-  text-align: start;
   margin-bottom: 50px;
+  text-align: start;
+
+  @include mobile {
+    font-size: 35px;
+  }
 }
 
 .informationBlock {
@@ -15,10 +23,18 @@
   margin-bottom: 50px;
   padding: 50px;
   gap: 50px;
-  background-color: rgba(128, 0, 128, 0.2);
-  backdrop-filter: blur(15px);
   border-radius: 25px;
+  background-color: $transparent-pink;
+  backdrop-filter: blur(15px);
   font-size: 30px;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 30px;
+  }
 }
 
 .block {
@@ -28,10 +44,15 @@
   &__title {
     font-weight: 600;
     font-size: 50px;
+
+    @include mobile {
+      font-weight: 500;
+      font-size: 30px;
+    }
   }
 
   &__text {
-    color: darkgray;
+    color: $gray;
   }
 }
 
@@ -39,15 +60,35 @@
   float: right;
   display: flex;
   padding: 50px;
-  gap: 30px;
-  font-size: 30px;
-  background-color: hsl(302, 58%, 37%);
-  backdrop-filter: blur(15px);
   border-radius: 25px;
+  gap: 30px;
+  background-color: $transparent-pink;
+  backdrop-filter: blur(15px);
+  font-size: 30px;
+  transition: $background;
+
+  &:hover {
+    background-color: $pink;
+  }
+
+  &:active {
+    background-color: $red;
+  }
+
+  @include mobile {
+    padding: 20px;
+    border-radius: 10px;
+    gap: 10px;
+    font-size: 20px;
+  }
 
   &__icon {
     width: 30px;
     margin: auto;
+
+    @include mobile {
+      width: 20px;
+    }
   }
 
   &__text {

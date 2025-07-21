@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import cx from 'classnames';
 
+import { formattedText } from '../../../utils/formattedText';
 import validationSchema from '../../../utils/validationSchema';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -25,8 +26,8 @@ const EditingForm = ({
 
   const handleSubmit = (values, { resetForm }) => {
     const editSong = {
-      author: values.author,
-      composition: values.composition,
+      author: formattedText(values.author),
+      composition: formattedText(values.composition),
       genre: values.genre,
       date: values.date,
       id: cbData,

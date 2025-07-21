@@ -1,37 +1,110 @@
-// @function clampSize($min, $max) {
-//   @return max(#{$min}px, #{$max});
-// }
+@import 'colors.scss';
+@import 'transitions.scss';
+
+@mixin dekstop {
+  @media (width >= 1510px) {
+    @content;
+  }
+}
 
 @mixin tablet {
-  @media (max-width: 919px) {
+  @media (width < 1510px) {
     @content;
   }
 }
 
-@mixin event-selectors {
-  @media (min-width: 920px) {
+@mixin mobile {
+  @media (width < 775px) {
     @content;
   }
 }
 
-@mixin todo-styele {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px 70px;
-  font-size: 40px;
-  font-weight: 400;
-  word-break: break-all;
-  border: 2px solid $green;
+@mixin icon-button-style {
+  padding: 10px;
   border-radius: 10px;
-  transition: border 200ms;
+  transition: $background;
+
+  &:hover {
+    background-color: $pink;
+    backdrop-filter: blur(5px);
+  }
+
+  &:active {
+    background-color: $red;
+  }
+
+  @include mobile {
+    padding: 5px;
+  }
+
+  &__icon {
+    width: 45px;
+
+    @include mobile {
+      width: 20px;
+    }
+  }
 }
 
-@mixin todo-text-styele {
-  position: relative;
+@mixin pop-up-window-style {
+  z-index: 3;
+  position: fixed;
+  top: 150px;
+  right: 50px;
+  padding: 30px;
+  width: 60%;
+  background-color: $violet;
+  border-radius: 10px;
+
+  @include tablet {
+    width: 90%;
+  }
+
+  @include mobile {
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+  }
+}
+
+@mixin input-style {
   width: 100%;
-  height: 100%;
-  transition: color 200ms;
+  padding: 15px;
+  line-height: 110%;
+  background-color: $transparent-pink;
+  backdrop-filter: blur(35px);
+  border-radius: 10px;
+  border: 1px solid $transparent-pink;
+  transition: $background-border;
+
+  &::placeholder {
+    color: $light-pink;
+  }
+
+  &:hover {
+    background-color: $pink;
+    backdrop-filter: blur(5px);
+  }
+
+  &:focus {
+    border: 1px solid $bright-pink;
+  }
+
+  @include mobile {
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
+
+@mixin errorText-style {
+  position: absolute;
+  left: 15px;
+  top: 105px;
+  font-size: 20px;
+
+  @include mobile {
+    top: 63px;
+    font-size: 14px;
+  }
 }

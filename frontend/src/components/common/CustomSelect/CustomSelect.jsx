@@ -8,7 +8,16 @@ import { ReactComponent as Arrow } from '../../svg/DropdownArrow.svg';
 
 import s from './CustomSelect.module.scss';
 
-const Dropdown = ({ value, onChange }) => {
+const Dropdown = ({ value, onChange, cbData }) => {
+  const handleChange = useCallback(
+    (e) => {
+      if (onChange) {
+        onChange(e, cbData);
+      }
+    },
+    [cbData, onChange]
+  );
+
   const placeholder = 'Сhoose a genre';
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
@@ -24,12 +33,12 @@ const Dropdown = ({ value, onChange }) => {
   });
 
   const handleSelectingAnItem = useCallback(
-    (value, label) => {
-      setSelectedValue(value);
-      onChange(label);
+    (label) => {
+      setSelectedValue(label);
+      handleChange(label);
       handleToggleDropdown();
     },
-    [onChange, handleToggleDropdown]
+    [handleChange, handleToggleDropdown]
   );
 
   useEffect(() => {
@@ -39,7 +48,11 @@ const Dropdown = ({ value, onChange }) => {
   return (
     <div className={s.root}>
       <div
-        className={cx(s.button, { [s.selected]: selectedValue })}
+        className={cx(
+          s.button,
+          { [s.button_focus]: isOpen },
+          { [s.selected]: selectedValue }
+        )}
         onClick={handleToggleDropdown}
       >
         {selectedValue || placeholder}
@@ -47,19 +60,17 @@ const Dropdown = ({ value, onChange }) => {
           className={cx(s.button__icon, { [s.button__icon_active]: isOpen })}
         />
       </div>
-      {isOpen && (
-        <ul className={s.list} ref={ref}>
-          {DropdownOptions.map(({ value, label }) => (
-            <li
-              className={s.list__item}
-              key={value}
-              onClick={() => handleSelectingAnItem(value, label)}
-            >
-              {label}
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className={cx(s.list, { [s.list_active]: isOpen })} ref={ref}>
+        {DropdownOptions.map(({ value, label }) => (
+          <li
+            className={s.list_active__item}
+            key={value}
+            onClick={() => handleSelectingAnItem(label)}
+          >
+            {label}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
