@@ -2,7 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 import { setSongs, addSong, deleteSong, editSong } from './slices/songsSlice';
 
-const API_URL = 'http://localhost:3001/songs';
+const API_URL = 'https://my-json-server-46c7.vercel.app/songs';
 
 function* fetchSongs() {
   const response = yield call(axios.get, API_URL);
