@@ -19,26 +19,38 @@
   }
 }
 
+@mixin event-selectors {
+  @media (width >= 775px) {
+    @content;
+  }
+}
+
 @mixin icon-button-style {
   padding: 10px;
   border-radius: 10px;
   transition: $background;
 
-  &:hover {
-    background-color: $pink;
-    backdrop-filter: blur(5px);
-  }
-
   &:active {
     background-color: $red;
   }
 
-  @include mobile {
+  @include event-selectors {
+    &:hover {
+      background-color: $pink;
+      backdrop-filter: blur(5px);
+    }
+  }
+
+  @include tablet {
     padding: 5px;
   }
 
   &__icon {
     width: 45px;
+
+    @include tablet {
+      width: 30px;
+    }
 
     @include mobile {
       width: 20px;
@@ -53,8 +65,8 @@
   right: 50px;
   padding: 30px;
   width: 60%;
-  background-color: $violet;
   border-radius: 10px;
+  background-color: $violet;
 
   @include tablet {
     width: 90%;
@@ -63,32 +75,35 @@
   @include mobile {
     top: 100px;
     left: 50%;
-    transform: translateX(-50%);
     width: 85%;
+    transform: translateX(-50%);
   }
 }
 
 @mixin input-style {
   width: 100%;
   padding: 15px;
-  line-height: 110%;
-  background-color: $transparent-pink;
-  backdrop-filter: blur(35px);
   border-radius: 10px;
   border: 1px solid $transparent-pink;
+  background-color: $transparent-pink;
+  backdrop-filter: blur(35px);
+  line-height: 110%;
+
   transition: $background-border;
 
   &::placeholder {
     color: $light-pink;
   }
 
-  &:hover {
-    background-color: $pink;
-    backdrop-filter: blur(5px);
-  }
-
   &:focus {
     border: 1px solid $bright-pink;
+  }
+
+  @include event-selectors {
+    &:hover {
+      background-color: $pink;
+      backdrop-filter: blur(5px);
+    }
   }
 
   @include mobile {
@@ -103,8 +118,8 @@
   top: 105px;
   font-size: 20px;
 
-  @include mobile {
-    top: 63px;
+  @include tablet {
+    top: 70px;
     font-size: 14px;
   }
 }

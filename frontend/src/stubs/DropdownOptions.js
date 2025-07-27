@@ -4,7 +4,7 @@ const DropdownOptions = [
   { value: 'Jazz', label: 'Джаз' },
   { value: 'Pop', label: 'Поп' },
   { value: 'Hip-hop', label: 'Хип-хоп' },
-  { value: 'Electronic music', label: 'Электронная музыка' },
+  { value: 'Electronic music', label: 'Электроника' },
   { value: 'Reggae', label: 'Регги' },
   { value: 'The blues', label: 'Блюз' },
   { value: 'Metal', label: 'Метал' },

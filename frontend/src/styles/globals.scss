@@ -2,6 +2,9 @@ html,
 body {
   padding: 0;
   margin: 0;
+  background: url('~/public/images/abstract-design-purple-flowing-lines.jpg')
+    no-repeat center center fixed;
+  background-size: cover;
   font-family: -apple-system, Roboto, BlinkMacSystemFont, Segoe UI, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
