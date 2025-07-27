@@ -16,7 +16,7 @@ const Home = () => {
   const handleToggleForm = () => setIsOpen(!isOpen);
   const handleCloseForm = () => setIsOpen(false);
   const handleCloseFormTablet = () => {
-    if (window.innerWidth < 1510) {
+    if (window.innerWidth < 775) {
       handleCloseForm();
     }
   };

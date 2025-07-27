@@ -3,10 +3,17 @@
 
 .root {
   max-height: 60vh;
+  //max-height: 190%;
   overflow-y: scroll;
 
   @include tablet {
+    //height: 20vh;
     max-height: 70vh;
+  }
+
+  @include mobile {
+    //height: 20vh;
+    max-height: 75vh;
   }
 }
 
@@ -19,7 +26,7 @@
   margin-bottom: 10px;
   gap: 30px;
 
-  @include mobile {
+  @include tablet {
     padding: 5px 0;
   }
 }
@@ -52,6 +59,10 @@
   gap: 20px;
   overflow: hidden;
 
+  @include tablet {
+    gap: 15px;
+  }
+
   @include mobile {
     gap: 10px;
   }
@@ -68,7 +79,7 @@
   &__author {
     word-break: break-all;
 
-    @include mobile {
+    @include tablet {
       font-size: 16px;
     }
   }
@@ -78,7 +89,7 @@
     font-size: 28px;
     word-break: break-all;
 
-    @include mobile {
+    @include tablet {
       font-size: 15px;
     }
   }
@@ -86,6 +97,10 @@
   &__icon {
     display: block;
     width: 50px;
+
+    @include tablet {
+      width: 30px;
+    }
 
     @include mobile {
       width: 20px;
