@@ -63,8 +63,8 @@
   position: fixed;
   top: 150px;
   right: 50px;
-  padding: 30px;
   width: 60%;
+  padding: 30px;
   border-radius: 10px;
   background-color: $violet;
 
@@ -83,12 +83,11 @@
 @mixin input-style {
   width: 100%;
   padding: 15px;
-  border-radius: 10px;
   border: 1px solid $transparent-pink;
+  border-radius: 10px;
   background-color: $transparent-pink;
   backdrop-filter: blur(35px);
   line-height: 110%;
-
   transition: $background-border;
 
   &::placeholder {
