@@ -7,11 +7,8 @@
 }
 
 .button {
-  //display: flex;
   width: 100%;
   padding: 15px;
-  //justify-content: space-between;
-  //gap: 3px;
   border: 1px solid $transparent-pink;
   border-radius: 10px;
   background-color: $transparent-pink;
@@ -35,7 +32,6 @@
   @include mobile {
     padding: 10px;
     border-radius: 5px;
-    //white-space: normal;
   }
 
   &__icon {
@@ -73,7 +69,12 @@
   overflow: hidden;
   background-color: $pink;
   transition: $height;
+
+  @include mobile {
+    border-radius: 5px;
+  }
 }
+
 .list_active {
   height: 250px;
   overflow-y: auto;

@@ -1,3 +1,4 @@
+import { func, string, object } from 'prop-types';
 import cx from 'classnames';
 import Button from '../Button/Button';
 import { ReactComponent as Hiding } from '../../svg/Hiding.svg';
@@ -11,7 +12,6 @@ const ViewWindow = ({
   genre,
   date,
   onClick,
-  onBlur,
   ref,
 }) => {
   return (
@@ -39,11 +39,21 @@ const ViewWindow = ({
           className={s.hideButton}
           title="to close"
           onClick={onClick}
-          image={<Hiding className={s.hideButton__icon} onBlur={onBlur} />}
+          image={<Hiding className={s.hideButton__icon} />}
         />
       </div>
     </div>
   );
+};
+
+ViewWindow.propTypes = {
+  ref: object,
+  className: string,
+  author: string,
+  composition: string,
+  genre: string,
+  date: string,
+  onClick: func,
 };
 
 export default ViewWindow;

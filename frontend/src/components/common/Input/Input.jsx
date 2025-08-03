@@ -33,6 +33,7 @@ Input.propTypes = {
   placeholder: string,
   name: string.isRequired,
   onChange: func,
+  value: string,
 };
 
 export default Input;

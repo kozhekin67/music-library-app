@@ -5,8 +5,8 @@
 .root {
   z-index: 1;
   display: grid;
-  gap: 20px;
   margin-bottom: 30px;
+  gap: 20px;
 }
 
 .form {
@@ -37,14 +37,14 @@
     background-color: $transparent-pink;
     transition: $background;
 
-    &:active {
-      background-color: $red;
-    }
-
     @include event-selectors {
       &:hover {
         background-color: $pink;
       }
+    }
+
+    &:active {
+      background-color: $red;
     }
 
     @include mobile {

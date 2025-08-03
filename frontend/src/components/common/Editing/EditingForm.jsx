@@ -1,6 +1,7 @@
 import { React } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
+import { func, string, object } from 'prop-types';
 import cx from 'classnames';
 
 import { formattedText } from '../../../utils/formattedText';
@@ -127,6 +128,18 @@ const EditingForm = ({
       </Formik>
     </div>
   );
+};
+
+EditingForm.propTypes = {
+  ref: object,
+  className: string,
+  author: string,
+  composition: string,
+  genre: string,
+  date: string,
+  onClick: func,
+  cbData: string,
+  openEditind: func,
 };
 
 export default EditingForm;
