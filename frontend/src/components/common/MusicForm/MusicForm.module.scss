@@ -37,14 +37,14 @@
     background-color: $transparent-pink;
     transition: $background;
 
-    &:active {
-      background-color: $red;
-    }
-
     @include event-selectors {
       &:hover {
         background-color: $pink;
       }
+    }
+
+    &:active {
+      background-color: $red;
     }
 
     @include mobile {

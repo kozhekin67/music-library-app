@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import { string } from 'prop-types';
+import { func, string } from 'prop-types';
 import cx from 'classnames';
 
 import useClickOutside from '../../hooks/useClickOutside';
@@ -8,16 +8,7 @@ import { ReactComponent as Arrow } from '../../svg/DropdownArrow.svg';
 
 import s from './CustomSelect.module.scss';
 
-const Dropdown = ({ value, onChange, cbData }) => {
-  const handleChange = useCallback(
-    (e) => {
-      if (onChange) {
-        onChange(e, cbData);
-      }
-    },
-    [cbData, onChange]
-  );
-
+const Dropdown = ({ value, onChange }) => {
   const placeholder = 'Сhoose a genre';
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
@@ -35,10 +26,10 @@ const Dropdown = ({ value, onChange, cbData }) => {
   const handleSelectingAnItem = useCallback(
     (label) => {
       setSelectedValue(label);
-      handleChange(label);
+      onChange(label);
       handleToggleDropdown();
     },
-    [handleChange, handleToggleDropdown]
+    [onChange, handleToggleDropdown]
   );
 
   useEffect(() => {
@@ -76,9 +67,9 @@ const Dropdown = ({ value, onChange, cbData }) => {
 };
 
 Dropdown.propTypes = {
-  classNamePrefix: string,
-  placeholder: string,
+  className: string,
   value: string,
+  onChange: func,
 };
 
 export default Dropdown;

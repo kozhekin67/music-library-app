@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
+import { func } from 'prop-types';
 import cx from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -104,6 +105,10 @@ const MusicForm = ({ closeForm }) => {
       </Formik>
     </div>
   );
+};
+
+Input.propTypes = {
+  closeForm: func,
 };
 
 export default MusicForm;

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectTextFilter } from '../../../redux/slices/filterSlice';
+import { func } from 'prop-types';
 import useClickOutside from '../../hooks/useClickOutside';
 import pressingEscape from '../../hooks/pressingEscape';
 
@@ -124,6 +125,10 @@ const MusicList = ({ closeFormTablet }) => {
       </ul>
     </div>
   );
+};
+
+MusicList.propTypes = {
+  closeFormTablet: func,
 };
 
 export default MusicList;
