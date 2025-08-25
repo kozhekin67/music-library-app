@@ -13,9 +13,9 @@ const Dropdown = ({ value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
 
-  const handleToggleDropdown = useCallback(() => {
-    setIsOpen(!isOpen);
-  }, [isOpen]);
+  const handleToggleDropdown = () => {
+    setIsOpen((state) => !state);
+  };
 
   const ref = useClickOutside(() => {
     if (isOpen) {
@@ -29,7 +29,7 @@ const Dropdown = ({ value, onChange }) => {
       onChange(label);
       handleToggleDropdown();
     },
-    [onChange, handleToggleDropdown]
+    [onChange]
   );
 
   useEffect(() => {
@@ -41,20 +41,18 @@ const Dropdown = ({ value, onChange }) => {
       <div
         className={cx(
           s.button,
-          { [s.button_focus]: isOpen },
+          { [s.focus]: isOpen },
           { [s.selected]: selectedValue }
         )}
         onClick={handleToggleDropdown}
       >
         {selectedValue || placeholder}
-        <Arrow
-          className={cx(s.button__icon, { [s.button__icon_active]: isOpen })}
-        />
+        <Arrow className={cx(s.icon)} />
       </div>
-      <ul className={cx(s.list, { [s.list_active]: isOpen })} ref={ref}>
+      <ul className={cx(s.list, { [s.listActive]: isOpen })} ref={ref}>
         {DropdownOptions.map(({ value, label }) => (
           <li
-            className={s.list_active__item}
+            className={s.listActive__item}
             key={value}
             onClick={() => handleSelectingAnItem(label)}
           >

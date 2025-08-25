@@ -34,7 +34,7 @@
     border-radius: 5px;
   }
 
-  &__icon {
+  .icon {
     position: absolute;
     top: 0;
     right: 10px;
@@ -46,14 +46,15 @@
       width: 20px;
     }
   }
+}
 
-  &__icon_active {
+.focus {
+  border: 1px solid $bright-pink;
+
+  & .icon {
     fill: white;
     transform: rotate(180deg);
   }
-}
-.button_focus {
-  border: 1px solid $bright-pink;
 }
 
 .selected {
@@ -75,7 +76,7 @@
   }
 }
 
-.list_active {
+.listActive {
   height: 250px;
   overflow-y: auto;
 

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
+import SongDetails from '../../../stubs/SongDetails';
 import { ReactComponent as Back } from '../../svg/Back.svg';
 
 import s from './ElementProperties.module.scss';
@@ -30,22 +31,12 @@ const ElementProperties = () => {
     <div className={s.app}>
       <h1 className={s.title}>Composition details</h1>
       <div className={s.informationBlock}>
-        <div className={s.block}>
-          <p className={s.block__title}>Author</p>
-          <p className={s.block__text}>{song.author}</p>
-        </div>
-        <div className={s.block}>
-          <p className={s.block__title}>Composition</p>
-          <p className={s.block__text}>{song.composition}</p>
-        </div>
-        <div className={s.block}>
-          <p className={s.block__title}>Genre</p>
-          <p className={s.block__text}>{song.genre}</p>
-        </div>
-        <div className={s.block}>
-          <p className={s.block__title}>Date</p>
-          <p className={s.block__text}>{song.date}</p>
-        </div>
+        {SongDetails.map((item) => (
+          <div className={s.block}>
+            <p className={s.block__title}>{item.title}</p>
+            <p className={s.block__text}>{song[item.text]}</p>
+          </div>
+        ))}
       </div>
       <Link className={s.button} to={'/'}>
         <Back className={s.button__icon} />

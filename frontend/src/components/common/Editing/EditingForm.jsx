@@ -112,13 +112,13 @@ const EditingForm = ({
             </div>
             <div className={s.form__buttonsBlock}>
               <Button
-                className={cx(s.form__button, s.form__button_delete)}
+                className={cx(s.form__button, s.delete)}
                 onClick={onClick}
                 cbData={cbData}
                 text="Delete"
               />
               <Button
-                className={cx(s.form__button, s.form__button_save)}
+                className={cx(s.form__button, s.save)}
                 type="submit"
                 text="Save"
               />

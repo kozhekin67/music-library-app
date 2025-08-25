@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { func } from 'prop-types';
-import cx from 'classnames';
+//import cx from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import { formattedText } from '../../../utils/formattedText';
@@ -95,11 +95,7 @@ const MusicForm = ({ closeForm }) => {
                 component="div"
               />
             </div>
-            <Button
-              className={cx(s.form__addSong, s.addSong)}
-              type="submit"
-              text="Add song"
-            />
+            <Button className={s.form__addSong} type="submit" text="Add song" />
           </Form>
         )}
       </Formik>

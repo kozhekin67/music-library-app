@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectTextFilter } from '../../../redux/slices/filterSlice';
-import { func } from 'prop-types';
 import useClickOutside from '../../hooks/useClickOutside';
 import pressingEscape from '../../hooks/pressingEscape';
 
@@ -17,7 +16,7 @@ import { ReactComponent as Viewing } from '../../svg/Viewing.svg';
 
 import s from './MusicList.module.scss';
 
-const MusicList = ({ closeFormTablet }) => {
+const MusicList = () => {
   const [songViewId, setSongViewId] = useState(null);
   const [songEditingId, setSongEditingId] = useState(null);
 
@@ -38,12 +37,10 @@ const MusicList = ({ closeFormTablet }) => {
 
   const handleOpenQuickView = (e, id) => {
     setSongViewId(id);
-    closeFormTablet();
   };
 
   const handleOpenEditind = (e, id) => {
     setSongEditingId(id);
-    closeFormTablet();
   };
 
   const filterSongs = songs.filter((song) => {
@@ -99,10 +96,7 @@ const MusicList = ({ closeFormTablet }) => {
                 <ViewWindow
                   ref={ref}
                   className={s.ViewWindowBlock}
-                  author={song.author}
-                  composition={song.composition}
-                  genre={song.genre}
-                  date={song.date}
+                  song={song}
                   onClick={handleOpenQuickView}
                 />
               )}
@@ -125,10 +119,6 @@ const MusicList = ({ closeFormTablet }) => {
       </ul>
     </div>
   );
-};
-
-MusicList.propTypes = {
-  closeFormTablet: func,
 };
 
 export default MusicList;

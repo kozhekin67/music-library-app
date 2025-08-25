@@ -13,12 +13,8 @@ import s from './Home.module.scss';
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleToggleForm = () => setIsOpen(!isOpen);
-  const handleCloseForm = () => setIsOpen(false);
-  const handleCloseFormTablet = () => {
-    if (window.innerWidth < 775) {
-      handleCloseForm();
-    }
+  const handleToggleForm = () => {
+    setIsOpen((state) => !state);
   };
 
   return (
@@ -26,11 +22,11 @@ const Home = () => {
       <header className={s.title}>
         <h1>Music Libery App</h1>
       </header>
-      <main className={cx(s.mainBlock, { [s.mainBlock_twoColumn]: isOpen })}>
-        <div className={cx(s.leftColumn, { [s.leftColumn_visible]: isOpen })}>
-          <MusicForm className={s.musicForm} closeForm={handleCloseForm} />
+      <main className={cx(s.main, { [s.twoColumn]: isOpen })}>
+        <div className={cx(s.leftColumn)}>
+          <MusicForm className={s.musicForm} closeForm={handleToggleForm} />
         </div>
-        <div className={cx(s.rightColumn, { [s.rightColumn_reduced]: isOpen })}>
+        <div className={cx(s.rightColumn)}>
           <div className={s.rightColumn__top}>
             <Button
               className={s.addForm}
@@ -40,7 +36,7 @@ const Home = () => {
             />
             <Filter />
           </div>
-          <MusicList closeFormTablet={handleCloseFormTablet} />
+          <MusicList />
         </div>
       </main>
     </div>
