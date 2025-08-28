@@ -23,11 +23,11 @@ const Home = () => {
         <h1>Music Libery App</h1>
       </header>
       <main className={cx(s.main, { [s.twoColumn]: isOpen })}>
-        <div className={cx(s.leftColumn)}>
+        <div className={cx(s.firstBlock)}>
           <MusicForm className={s.musicForm} closeForm={handleToggleForm} />
         </div>
-        <div className={cx(s.rightColumn)}>
-          <div className={s.rightColumn__top}>
+        <div className={cx(s.secondBlock)}>
+          <div className={s.secondBlock__top}>
             <Button
               className={s.addForm}
               title="form"
@@ -36,7 +36,7 @@ const Home = () => {
             />
             <Filter />
           </div>
-          <MusicList />
+          <MusicList isOpen={isOpen} toggleForm={handleToggleForm} />
         </div>
       </main>
     </div>

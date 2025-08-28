@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import {
@@ -12,16 +12,18 @@ import s from './Filter.module.scss';
 
 const Filter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const searchQuery = searchParams.get('search') || '';
 
   const dispatch = useDispatch();
   const textFilter = useSelector(selectTextFilter);
-  const handleTextFilterChange = (event) => {
-    const newValue = event.target.value;
-    dispatch(setTextFilter(newValue));
-    setSearchParams({ search: newValue });
-  };
+
+  const handleTextFilterChange = useMemo(() => {
+    return (event) => {
+      const newValue = event.target.value;
+      dispatch(setTextFilter(newValue));
+      setSearchParams({ search: newValue });
+    };
+  }, [dispatch, setSearchParams]);
 
   useEffect(() => {
     dispatch(setTextFilter(searchQuery));

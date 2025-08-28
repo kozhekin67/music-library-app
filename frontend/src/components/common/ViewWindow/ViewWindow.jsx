@@ -7,7 +7,7 @@ import { ReactComponent as Hiding } from '../../svg/Hiding.svg';
 
 import s from './ViewWindow.module.scss';
 
-const ViewWindow = ({ className, onClick, ref, song }) => {
+const ViewWindow = ({ className, onClick, ref, song, cbData }) => {
   return (
     <div className={cx(s.root, className)} ref={ref}>
       <div className={s.informationBlock}>
@@ -22,6 +22,7 @@ const ViewWindow = ({ className, onClick, ref, song }) => {
         <Button
           className={s.hideButton}
           title="to close"
+          cbData={cbData}
           onClick={onClick}
           image={<Hiding className={s.hideButton__icon} />}
         />

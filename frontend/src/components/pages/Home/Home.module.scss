@@ -20,9 +20,6 @@
 
 .main {
   position: relative;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
   padding: 0 50px;
   font-size: 30px;
 
@@ -35,31 +32,28 @@
   }
 }
 
-.leftColumn {
+.firstBlock {
+  position: absolute;
+  top: 170px;
+  left: 50%;
   opacity: 0;
-  width: 0%;
+  width: 35%;
   height: 680px;
-  padding: 50px 0;
+  padding: 50px;
   border-radius: 25px;
-  background-color: $transparent-pink;
+  background-color: $violet;
   backdrop-filter: blur(15px);
   overflow: hidden;
-  transition: $opacity-width-padding;
+  transform: translateX(-50%);
 
   @include tablet {
+    top: 110px;
     height: 480px;
-    padding: 20px 0;
-  }
-
-  @include mobile {
-    position: absolute;
-    height: 480px;
-    background-color: $violet;
-    transition: $none;
+    padding: 20px;
   }
 }
 
-.rightColumn {
+.secondBlock {
   position: relative;
   width: 100%;
   height: 100%;
@@ -89,33 +83,25 @@
 }
 
 .twoColumn {
-  gap: 50px;
-
-  & .leftColumn {
-    z-index: 1;
+  & .firstBlock {
     opacity: 1;
-    width: 35%;
+    z-index: 1;
     padding: 50px;
 
     @include tablet {
-      top: 200px;
-      left: 100px;
-      width: 50%;
       padding: 20px;
     }
 
     @include mobile {
-      position: absolute;
       top: 100px;
       left: 50%;
       width: 80%;
       height: 420px;
       border-radius: 10px;
-      transform: translateX(-50%);
     }
   }
 
-  & .rightColumn {
+  & .secondBlock {
     @include tablet {
       width: 100%;
     }

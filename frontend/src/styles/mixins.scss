@@ -1,26 +1,27 @@
 @import 'colors.scss';
 @import 'transitions.scss';
+@import 'mediaQueries.scss';
 
 @mixin dekstop {
-  @media (width >= 1510px) {
+  @media #{$dekstop} {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (width < 1510px) {
+  @media #{$tablet} {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (width < 775px) {
+  @media #{$mobile} {
     @content;
   }
 }
 
 @mixin event-selectors {
-  @media (width >= 775px) {
+  @media #{$event-selectors} {
     @content;
   }
 }

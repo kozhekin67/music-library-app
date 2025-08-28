@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
-import { func } from 'prop-types';
+import { func, object } from 'prop-types';
 //import cx from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,7 +12,7 @@ import Dropdown from '../CustomSelect/CustomSelect';
 
 import s from './MusicForm.module.scss';
 
-const MusicForm = ({ closeForm }) => {
+const MusicForm = ({ closeForm, ref }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
@@ -29,7 +29,7 @@ const MusicForm = ({ closeForm }) => {
   };
 
   return (
-    <div className={s.root}>
+    <div className={s.root} ref={ref}>
       <Formik
         initialValues={{ author: '', composition: '', genre: '', date: '' }}
         validationSchema={validationSchema}
@@ -105,6 +105,7 @@ const MusicForm = ({ closeForm }) => {
 
 Input.propTypes = {
   closeForm: func,
+  ref: object,
 };
 
 export default MusicForm;

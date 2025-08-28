@@ -20,10 +20,12 @@ const EditingForm = ({
   genre,
   date,
   onClick,
-  cbData,
-  openEditind,
+  id,
+  SongEditingId,
 }) => {
   const dispatch = useDispatch();
+
+  const close = () => SongEditingId(null);
 
   const handleSubmit = (values, { resetForm }) => {
     const editSong = {
@@ -31,11 +33,11 @@ const EditingForm = ({
       composition: formattedText(values.composition),
       genre: values.genre,
       date: values.date,
-      id: cbData,
+      id: id,
     };
     dispatch({ type: 'songs/editingSong', payload: editSong });
     resetForm();
-    openEditind(null);
+    close();
   };
 
   return (
@@ -114,7 +116,7 @@ const EditingForm = ({
               <Button
                 className={cx(s.form__button, s.delete)}
                 onClick={onClick}
-                cbData={cbData}
+                cbData={id}
                 text="Delete"
               />
               <Button
@@ -138,8 +140,7 @@ EditingForm.propTypes = {
   genre: string,
   date: string,
   onClick: func,
-  cbData: string,
-  openEditind: func,
+  cbData: object.isRequired,
 };
 
 export default EditingForm;
