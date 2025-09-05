@@ -1,8 +1,8 @@
 import { func, object } from 'prop-types';
 import cx from 'classnames';
 
-import SongDetails from '../../../stubs/SongDetails';
-import Button from '../Button/Button';
+import SongDetails from '@/stubs/SongDetails';
+import Button from '@/common/Button/Button';
 
 import s from './ViewWindow.module.scss';
 
