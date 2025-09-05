@@ -44,9 +44,10 @@ const Dropdown = ({ value, onChange }) => {
           { [s.focus]: isOpen },
           { [s.selected]: selectedValue }
         )}
-        onClick={handleToggleDropdown}
       >
-        {selectedValue || placeholder}
+        <span className={s.text} onClick={handleToggleDropdown}>
+          {selectedValue || placeholder}
+        </span>
         <Arrow className={cx(s.icon)} />
       </div>
       <ul className={cx(s.list, { [s.listActive]: isOpen })} ref={ref}>

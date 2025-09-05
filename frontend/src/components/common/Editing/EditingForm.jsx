@@ -103,8 +103,11 @@ const EditingForm = ({
                 name="date"
                 value={values.date}
                 onChange={handleChange}
+                mask="99.99.9999"
                 placeholder="ДД.ММ.ГГГГ"
-                maxLength={10}
+                definitions={{
+                  9: /\d/,
+                }}
               />
               <ErrorMessage
                 className={s.form__errorText}

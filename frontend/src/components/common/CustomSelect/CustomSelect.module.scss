@@ -8,7 +8,6 @@
 
 .button {
   width: 100%;
-  padding: 15px;
   border: 1px solid $transparent-pink;
   border-radius: 10px;
   background-color: $transparent-pink;
@@ -32,6 +31,13 @@
   @include mobile {
     padding: 10px;
     border-radius: 5px;
+  }
+
+  .text {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
   }
 
   .icon {

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
+import Header from '../../common/Header/Header';
 import SongDetails from '../../../stubs/SongDetails';
 import { ReactComponent as Back } from '../../svg/Back.svg';
 
@@ -29,7 +30,7 @@ const ElementProperties = () => {
 
   return (
     <div className={s.app}>
-      <h1 className={s.title}>Composition details</h1>
+      <Header text="Composition details" />
       <div className={s.informationBlock}>
         {SongDetails.map((item) => (
           <div className={s.block}>

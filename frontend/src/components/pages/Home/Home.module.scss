@@ -1,23 +1,6 @@
 @import 'src/styles/mixins.scss';
 @import 'src/styles/colors.scss';
 
-.title {
-  width: 90%;
-  margin: 0 auto 50px;
-  padding: 0 50px;
-  text-align: start;
-
-  @include tablet {
-    margin: 0 auto 20px;
-    padding: 0 20px;
-    font-size: 30px;
-  }
-
-  @include mobile {
-    font-size: 30px;
-  }
-}
-
 .main {
   position: relative;
   padding: 0 50px;

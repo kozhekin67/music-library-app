@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { func, object } from 'prop-types';
-//import cx from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import { formattedText } from '../../../utils/formattedText';
@@ -86,8 +85,11 @@ const MusicForm = ({ closeForm, ref }) => {
                 name="date"
                 value={values.date}
                 onChange={handleChange}
+                mask="99.99.9999"
                 placeholder="ДД.ММ.ГГГГ"
-                maxLength={10}
+                definitions={{
+                  9: /\d/,
+                }}
               />
               <ErrorMessage
                 className={s.form__errorText}

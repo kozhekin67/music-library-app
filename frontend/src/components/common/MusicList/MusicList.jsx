@@ -11,8 +11,6 @@ import Editing from '../Editing/EditingForm';
 
 import { ReactComponent as SeparateWindow } from '../../svg/SeparateWindow.svg';
 import { ReactComponent as SongIcon } from '../../svg/SongIcon.svg';
-import { ReactComponent as Edit } from '../../svg/Edit.svg';
-import { ReactComponent as Viewing } from '../../svg/Viewing.svg';
 
 import s from './MusicList.module.scss';
 
@@ -20,9 +18,8 @@ const MusicList = ({ isOpen, toggleForm }) => {
   const [songViewId, setSongViewId] = useState(null);
   const [songEditingId, setSongEditingId] = useState(null);
 
-  const ref = useClickOutside(
-    () => setSongViewId(null) || setSongEditingId(null)
-  );
+  const songViewRef = useClickOutside(() => setSongViewId(null));
+  const editingRef = useClickOutside(() => setSongEditingId(null));
 
   const songs = useSelector((state) => state.songs.songs);
   const textFilter = useSelector(selectTextFilter);
@@ -92,18 +89,18 @@ const MusicList = ({ isOpen, toggleForm }) => {
                 title="open the editing window"
                 onClick={handleOpenAction}
                 cbData={{ type: 'edit', id: song.id }}
-                image={<Edit className={s.panelButton__icon} />}
+                iconName="edit"
               />
               <Button
                 className={s.panelButton}
                 title="open a quick preview"
                 onClick={handleOpenAction}
                 cbData={{ type: 'view', id: song.id }}
-                image={<Viewing className={s.panelButton__icon} />}
+                iconName="viewing"
               />
               {songViewId === song.id && (
                 <ViewWindow
-                  ref={ref}
+                  ref={songViewRef}
                   className={s.ViewWindowBlock}
                   song={song}
                   cbData={{ type: 'close' }}
@@ -113,7 +110,7 @@ const MusicList = ({ isOpen, toggleForm }) => {
               {songEditingId === song.id && (
                 <Editing
                   className={s.editingBlock}
-                  ref={ref}
+                  ref={editingRef}
                   author={song.author}
                   composition={song.composition}
                   genre={song.genre}
