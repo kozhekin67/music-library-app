@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectTextFilter } from '../../../redux/slices/filterSlice';
-import { func } from 'prop-types';
 import useClickOutside from '../../hooks/useClickOutside';
 import pressingEscape from '../../hooks/pressingEscape';
 
@@ -12,18 +11,15 @@ import Editing from '../Editing/EditingForm';
 
 import { ReactComponent as SeparateWindow } from '../../svg/SeparateWindow.svg';
 import { ReactComponent as SongIcon } from '../../svg/SongIcon.svg';
-import { ReactComponent as Edit } from '../../svg/Edit.svg';
-import { ReactComponent as Viewing } from '../../svg/Viewing.svg';
 
 import s from './MusicList.module.scss';
 
-const MusicList = ({ closeFormTablet }) => {
+const MusicList = ({ isOpen, toggleForm }) => {
   const [songViewId, setSongViewId] = useState(null);
   const [songEditingId, setSongEditingId] = useState(null);
 
-  const ref = useClickOutside(
-    () => setSongViewId(null) || setSongEditingId(null)
-  );
+  const songViewRef = useClickOutside(() => setSongViewId(null));
+  const editingRef = useClickOutside(() => setSongEditingId(null));
 
   const songs = useSelector((state) => state.songs.songs);
   const textFilter = useSelector(selectTextFilter);
@@ -36,14 +32,21 @@ const MusicList = ({ closeFormTablet }) => {
   const handleDeleteSong = (e, id) =>
     dispatch({ type: 'songs/removeSong', payload: id });
 
-  const handleOpenQuickView = (e, id) => {
-    setSongViewId(id);
-    closeFormTablet();
-  };
+  const setState = isOpen ? toggleForm : () => {};
 
-  const handleOpenEditind = (e, id) => {
-    setSongEditingId(id);
-    closeFormTablet();
+  const handleOpenAction = (e, cbData) => {
+    const { type, id } = cbData;
+
+    if (type === 'edit') {
+      setSongEditingId(id);
+      setState();
+    } else if (type === 'view') {
+      setSongViewId(id);
+      setState();
+    } else if (type === 'close') {
+      setSongViewId(null);
+      setState();
+    }
   };
 
   const filterSongs = songs.filter((song) => {
@@ -84,39 +87,37 @@ const MusicList = ({ closeFormTablet }) => {
               <Button
                 className={s.panelButton}
                 title="open the editing window"
-                onClick={handleOpenEditind}
-                cbData={song.id}
-                image={<Edit className={s.panelButton__icon} />}
+                onClick={handleOpenAction}
+                cbData={{ type: 'edit', id: song.id }}
+                iconName="edit"
               />
               <Button
                 className={s.panelButton}
                 title="open a quick preview"
-                onClick={handleOpenQuickView}
-                cbData={song.id}
-                image={<Viewing className={s.panelButton__icon} />}
+                onClick={handleOpenAction}
+                cbData={{ type: 'view', id: song.id }}
+                iconName="viewing"
               />
               {songViewId === song.id && (
                 <ViewWindow
-                  ref={ref}
+                  ref={songViewRef}
                   className={s.ViewWindowBlock}
-                  author={song.author}
-                  composition={song.composition}
-                  genre={song.genre}
-                  date={song.date}
-                  onClick={handleOpenQuickView}
+                  song={song}
+                  cbData={{ type: 'close' }}
+                  onClick={handleOpenAction}
                 />
               )}
               {songEditingId === song.id && (
                 <Editing
                   className={s.editingBlock}
-                  ref={ref}
+                  ref={editingRef}
                   author={song.author}
                   composition={song.composition}
                   genre={song.genre}
                   date={song.date}
                   onClick={handleDeleteSong}
-                  cbData={song.id}
-                  openEditind={handleOpenEditind}
+                  id={song.id}
+                  SongEditingId={setSongEditingId}
                 />
               )}
             </div>
@@ -125,10 +126,6 @@ const MusicList = ({ closeFormTablet }) => {
       </ul>
     </div>
   );
-};
-
-MusicList.propTypes = {
-  closeFormTablet: func,
 };
 
 export default MusicList;

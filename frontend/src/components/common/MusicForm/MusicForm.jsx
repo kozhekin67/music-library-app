@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form, ErrorMessage } from 'formik';
-import { func } from 'prop-types';
-import cx from 'classnames';
+import { func, object } from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 import { formattedText } from '../../../utils/formattedText';
@@ -12,7 +11,7 @@ import Dropdown from '../CustomSelect/CustomSelect';
 
 import s from './MusicForm.module.scss';
 
-const MusicForm = ({ closeForm }) => {
+const MusicForm = ({ closeForm, ref }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
@@ -29,7 +28,7 @@ const MusicForm = ({ closeForm }) => {
   };
 
   return (
-    <div className={s.root}>
+    <div className={s.root} ref={ref}>
       <Formik
         initialValues={{ author: '', composition: '', genre: '', date: '' }}
         validationSchema={validationSchema}
@@ -86,8 +85,11 @@ const MusicForm = ({ closeForm }) => {
                 name="date"
                 value={values.date}
                 onChange={handleChange}
+                mask="99.99.9999"
                 placeholder="ДД.ММ.ГГГГ"
-                maxLength={10}
+                definitions={{
+                  9: /\d/,
+                }}
               />
               <ErrorMessage
                 className={s.form__errorText}
@@ -95,11 +97,7 @@ const MusicForm = ({ closeForm }) => {
                 component="div"
               />
             </div>
-            <Button
-              className={cx(s.form__addSong, s.addSong)}
-              type="submit"
-              text="Add song"
-            />
+            <Button className={s.form__addSong} type="submit" text="Add song" />
           </Form>
         )}
       </Formik>
@@ -109,6 +107,7 @@ const MusicForm = ({ closeForm }) => {
 
 Input.propTypes = {
   closeForm: func,
+  ref: object,
 };
 
 export default MusicForm;

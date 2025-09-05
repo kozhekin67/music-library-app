@@ -44,7 +44,7 @@
     }
   }
 
-  &__button_save {
+  & .save {
     background-color: $pink;
     transition: $background;
 
@@ -59,7 +59,7 @@
     }
   }
 
-  &__button_delete {
+  & .delete {
     background-color: $light-pink;
     transition: $background;
 

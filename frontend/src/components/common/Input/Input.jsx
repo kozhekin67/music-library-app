@@ -1,4 +1,5 @@
 import { string, func } from 'prop-types';
+import { IMaskInput } from 'react-imask';
 import cx from 'classnames';
 
 import s from './Input.module.scss';
@@ -11,12 +12,14 @@ const Input = (props) => {
     type = 'text',
     value,
     onChange,
+    mask,
   } = props;
 
   return (
-    <input
+    <IMaskInput
       name={name}
       className={cx(s.root, className)}
+      mask={mask}
       placeholder={placeholder}
       type={type}
       value={value}

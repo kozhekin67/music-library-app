@@ -7,15 +7,6 @@
   margin: auto;
 }
 
-.title {
-  margin-bottom: 50px;
-  text-align: start;
-
-  @include mobile {
-    font-size: 25px;
-  }
-}
-
 .informationBlock {
   display: grid;
   grid-template-rows: auto;
@@ -43,11 +34,9 @@
   gap: 10px;
 
   &__title {
-    font-weight: 600;
-    font-size: 50px;
+    font-size: 30px;
 
     @include mobile {
-      font-weight: 500;
       font-size: 20px;
     }
   }
@@ -80,7 +69,6 @@
     padding: 20px;
     border-radius: 10px;
     gap: 10px;
-    font-size: 20px;
   }
 
   &__icon {
