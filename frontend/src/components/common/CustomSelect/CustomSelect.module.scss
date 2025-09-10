@@ -29,7 +29,6 @@
   }
 
   @include mobile {
-    padding: 10px;
     border-radius: 5px;
   }
 
@@ -38,6 +37,10 @@
     width: 100%;
     box-sizing: border-box;
     padding: 15px;
+
+    @include mobile {
+      padding: 10px;
+    }
   }
 
   .icon {
